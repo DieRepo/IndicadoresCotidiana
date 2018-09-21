@@ -1,0 +1,37 @@
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.pdb
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.xml
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.Resources.resources
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.GenerateResource.Cache
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.CoreCompileInputs.cache
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.dll
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.xml
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.pdb
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.pdb
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.Resources.resources
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.GenerateResource.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.CoreCompileInputs.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.CopyComplete
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Release\IndicadoresPjem.pdb
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IronPdf.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.pdb
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IronPdf.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.Resources.resources
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.GenerateResource.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.CoreCompileInputs.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.vbproj.CopyComplete
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Release\IndicadoresPjem.pdb

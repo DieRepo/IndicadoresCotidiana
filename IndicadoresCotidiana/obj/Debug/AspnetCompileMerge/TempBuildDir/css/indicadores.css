@@ -1,0 +1,112 @@
+﻿.container {
+    height: 100%;
+    background: #f0e68c;
+    /*border: 1px solid ;*/
+}
+
+.tdStyle {
+text-align:center;
+ width:100px; 
+ height: 0px;
+}
+.scroller { 
+    height: 62px; 
+    /*border: 1px solid #D4CCB0;*/ 
+    border-radius: 6px; 
+    overflow: auto; 
+}
+
+.scroller ul {
+    width:4500px;
+    /*border: 0;*/
+}
+
+.ui-tabs { 
+    background: transparent; 
+    border: none; 
+} 
+
+.ui-tabs .ui-widget-header { 
+    background: transparent; 
+    border: none; 
+    border-bottom: 1px solid #c0c0c0; 
+    -moz-border-radius: 0px; 
+    -webkit-border-radius: 0px; 
+    border-radius: 0px; 
+}
+
+.ui-tabs .ui-widget-header .ui-state-default:hover {
+        background:  #216D1F; 
+}
+
+.ui-tabs .ui-tabs-nav .ui-state-default { 
+    background: #459e00; 
+    border: none; 
+} 
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active { 
+    background: #ffffff; 
+    border: none; 
+} 
+
+.ui-tabs .ui-tabs-nav .ui-state-default a { 
+    color: #ffffff; 
+} 
+
+.ui-tabs .ui-tabs-nav .ui-state-active a { 
+    color: #459e00; 
+}
+
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    /*background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);*/
+    background: url('../img/tenor.gif')50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    height: 35px;
+}
+
+#menu li {
+    float: left;
+}
+
+#menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 14px;
+    text-decoration: none;
+}
+
+#menu li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+.Rojo {
+    background-color: red;
+    width:140px;
+    height: 60px;
+}
+
+.Verde {
+    background-color: green;
+    width:140px;
+    height: 60px;
+}
+

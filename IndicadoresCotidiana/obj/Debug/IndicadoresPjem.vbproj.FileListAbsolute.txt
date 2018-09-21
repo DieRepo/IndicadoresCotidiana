@@ -1,0 +1,69 @@
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.pdb
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.xml
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.Resources.resources
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.GenerateResource.Cache
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.dll
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.xml
+c:\users\admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.pdb
+C:\Users\Admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\MySql.Data.DLL
+C:\Users\Admin\documents\visual studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.pdb
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.xml
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\MySql.Data.DLL
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.Resources.resources
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.GenerateResource.Cache
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.dll
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.xml
+F:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.pdb
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.pdb
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.xml
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\bin\MySql.Data.DLL
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.Resources.resources
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.GenerateResource.Cache
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.dll
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.xml
+G:\Visual Studio 2013\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.pdb
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.pdb
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.xml
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.Resources.resources
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.GenerateResource.Cache
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.CoreCompileInputs.cache
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.dll
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.xml
+C:\Users\Abisai Meza\Documents\Visual Studio 2017\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.pdb
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.pdb
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\bin\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.Resources.resources
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.GenerateResource.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.CoreCompileInputs.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.CopyComplete
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.pdb
+C:\Users\carolina\Documents\Projects\IndicadoresPjem_20180411\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll.config
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.pdb
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\bin\IronPdf.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbprojResolveAssemblyReference.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.Resources.resources
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.GenerateResource.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.CoreCompileInputs.cache
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.vbproj.CopyComplete
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.dll
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.xml
+C:\Users\carolina\Documents\Projects\IndicadoresPjem\IndicadoresPjem\obj\Debug\IndicadoresPjem.pdb

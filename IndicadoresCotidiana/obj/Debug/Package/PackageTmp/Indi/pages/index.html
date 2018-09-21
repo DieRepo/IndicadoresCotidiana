@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PJEDOMEX</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <link href="../dist/css/ind-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        table {
+            width: 100%;
+        }
+
+            table table {
+                width: 100%;
+            }
+
+        td {
+            border: 0px solid black;
+            width: 190px;
+        }
+
+        table table td {
+        }
+
+        .ContenGreafica {
+            height: 100px;
+            text-align: center;
+        }
+
+        .Encabezado {
+            height: 30px;
+        }
+
+        .variables {
+            width: 361px;
+        }
+
+        .informacion {
+            border: 1px solid;
+        }
+
+        .tablavariables {
+            width: 100%;
+            border: 1px solid black;
+        }
+
+            .tablavariables td {
+                border: 1px solid black;
+            }
+
+        .tablaGraficas {
+            text-align: center;
+            width: 100%;
+        }
+
+        .ContenGreafica {
+        }
+
+        .morris-hover {
+            position: absolute;
+            z-index: 1000
+        }
+
+            .morris-hover .morris-default-style {
+                border-radius: 10px;
+                padding: 6px;
+                color: #666;
+                background: rgba(255,255,255,0.8);
+                border: solid 2px rgba(230,230,230,0.8);
+                font-family: sans-serif;
+                font-size: 12px;
+                text-align: center
+            }
+
+                .morris-hover.morris-default-style .morris-hover-row-label {
+                    font-weight: bold;
+                    margin: 0.25em 0
+                }
+
+                .morris-hover.morris-default-style .morris-hover-point {
+                    white-space: nowrap;
+                    margin: 0.1em 0
+                }
+
+        .divIzquierdo {
+            float: left;
+            width: 50%;
+            font-size: 14px;
+        }
+
+        .divDerecha {
+            float: right;
+            width: 50%;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <nav id="navbar-pj" class="navbar navbar-header-pj navbar-static-top" role="navigation" style="margin-bottom: 0; border-bottom: 2px solid #af3737;">
+            <div class="navbar-header">
+                <button id="MenuIndi" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="glyphicon glyphicon-option-horizontal" style="font-size: 30px; color: #fff;"></span>
+                </button>
+                <img id="logo-pj" class="click" src="../../img/pj.png" />
+            </div>
+            <div id="titulo">
+                <span>Sistema de</span>
+                <span>Indicadores</span>
+            </div>
+            <div class="sidebar menu-opciones" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <div id="titulo-mini" style="margin-right: 14px; line-height: 1; padding-top: 10px; padding-bottom: 10px; color: white; text-align: right;">
+                                <span style="display: block;font-size: 18px;">Sistema de</span>
+                                <span style="display: block;font-weight: bold;font-size: 25px;">Indicadores</span>
+                            </div>
+                        </li>
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form selects-change">
+                                <select id="Juzgados" class="form-control form-control-lg"></select>
+                                <select id="Anios" class="form-control form-control-lg"></select>
+                                <select id="Meses" class="form-control form-control-lg"></select>
+                                <select id="Materia" class="form-control form-control-lg">
+                                    <option value="civil" selected>Civil</option>
+                                    <option value="familiar">Familiar</option>
+                                    <option value="mercantil">Mercantil</option>
+                                </select>
+
+                            </div>
+                        </li>
+
+                        <li class="click">
+                            <a id="inf-general"><i class="fa fa-area-chart fa-fw"></i> INFORMACION GENERAL</a>
+                        </li>
+                        <li class="click">
+                            <a id="gen-reporte"><i class="fa fa-pencil-square-o fa-fw"></i>GENERA REPORTE</a>
+                        </li>
+
+                        <li id="Indicadores-materia">
+                            <a id="#"><i class="fa fa-line-chart fa-fw"></i> INDICADORES <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level"></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="page-wrapper" style="min-height:0 !important">
+            <div class="row">
+                <div class="col-lg-12 page-header-pj ">
+                    <span id="titulo-indicador"></span>
+                    <span id="distrito"></span>
+                    <span id="titulo-unico"></span>
+                    <hr style="border-bottom: 2px solid #b7b7b7; width:100%; margin:15px 0px 0px 0px;" />
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-blue">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-4x"></i>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div id="Desc1" class="huge">26</div>
+                                    <div id="Tex1">New Comments!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-4x"></i>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div id="Desc2" class="huge">26</div>
+                                    <div id="Tex2">New Comments!</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-4x"></i>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div id="Desc3" class="huge">26</div>
+                                    <div id="Tex3">New Comments!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Logros de los ultimos 4 mese
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="panel-body">
+                                    <div id="morris-bar-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> ESTATUS MENSUAL
+                        </div>
+                        <div class="panel-body">
+                            <div id="morris-donut-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="div-flotante-tabla">
+                <p>
+                    <table id="tabla-indicadores" class="display nowrap table table-striped table-bordered" cellspacing="0" style="width: 80%"></table>
+                </p>
+            </div>
+
+            <pagebreak />
+
+            <div id="Complemento" class="row" style="margin-bottom: 10px; padding-bottom: 10px;">
+                <button class="btn" id="button-pdf-exporta" style="display: none; background-color: white;"> Exporta a PDF</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+
+
+    <!--<script src="../vendor/jquery/jquery.min.js"></script>-->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../js/ajax.js"></script>
+    <!--script src="../../js/html2canvas.js"></!--script-->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/eventosIndicadores.js"></script>
+    <script src="../js/json.js"></script>
+
+</body>
+
+</html>
