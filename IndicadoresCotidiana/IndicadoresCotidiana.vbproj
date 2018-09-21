@@ -99,7 +99,6 @@
     <Content Include="img\pj.png" />
     <Content Include="img\tenor.gif" />
     <Content Include="Index.html" />
-    <Content Include="Index_Old.html" />
     <Content Include="Indi\dist\css\ind-admin.css" />
     <Content Include="Indi\js\eventosIndicadores.js" />
     <Content Include="Indi\js\json.js" />
