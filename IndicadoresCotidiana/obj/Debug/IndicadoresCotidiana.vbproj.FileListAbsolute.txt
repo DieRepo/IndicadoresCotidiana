@@ -1,0 +1,13 @@
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\bin\IndicadoresPjem.dll.config
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\bin\IndicadoresPjem.dll
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\bin\IndicadoresPjem.pdb
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\bin\IndicadoresPjem.xml
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\bin\IronPdf.xml
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresCotidiana.vbprojResolveAssemblyReference.cache
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresPjem.Resources.resources
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresCotidiana.vbproj.GenerateResource.cache
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresCotidiana.vbproj.CoreCompileInputs.cache
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresCotidiana.vbproj.CopyComplete
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresPjem.dll
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresPjem.xml
+C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Debug\IndicadoresPjem.pdb

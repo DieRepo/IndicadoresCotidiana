@@ -1521,4 +1521,22 @@ Public Class Servicio
     End Function
 
 
+    <WebMethod>
+    Public Shared Function ExitUser() As Boolean
+        HttpContext.Current.Session.RemoveAll()
+        HttpContext.Current.Session.Abandon()
+        Return True
+
+    End Function
+
+    <WebMethod>
+    Public Shared Function VerificaLogin() As String
+        If HttpContext.Current.Session("Sesion") Is Nothing Then
+            ExitUser()
+            Return "no"
+        Else
+            Return "si"
+        End If
+    End Function
+
 End Class

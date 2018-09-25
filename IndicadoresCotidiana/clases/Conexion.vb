@@ -17,6 +17,8 @@ Public Class Conexion
                 connectionString = ConfigurationManager.AppSettings("ConnectionStringSigejepa")
             ElseIf intTipoConsulta = 3 Then
                 connectionString = ConfigurationManager.AppSettings("ConnectionSEJ")
+            ElseIf intTipoConsulta = 4 Then
+                connectionString = ConfigurationManager.AppSettings("ConnectionSeg")
             End If
 
 
