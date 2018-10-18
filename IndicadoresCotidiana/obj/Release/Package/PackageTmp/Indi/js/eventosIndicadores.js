@@ -6,13 +6,18 @@ var Meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Ag
 
 $(function () {
 
-    creaJsonMenuIndicadoresT($("#Indicadores-materia > ul"));
-    eventosMouseover();
-    eventosClick();
-    eventosMouseleave();
-    eventosChange();
-    eventosResize();
-
+    consulta("VerificaLogin", "{}", function(data) {
+        if (data == "si") {
+            creaJsonMenuIndicadoresT($("#Indicadores-materia > ul"));
+            eventosMouseover();
+            eventosClick();
+            eventosMouseleave();
+            eventosChange();
+            eventosResize();
+        } else {
+            window.location.href = "../../Login.aspx";
+        }
+    })
 });
 
 
@@ -715,8 +720,10 @@ function eventosClick() {
 
     $("#cierra-sesion").on("click", function () {
 
-       // ejecuta("ExitUser", "{}");
-        window.location.href = "../../Login.aspx";
+        ejecuta("ExitUser", "{}", function () {
+            window.location.href = "../../Login.aspx";
+        });
+       // 
 
     });
 

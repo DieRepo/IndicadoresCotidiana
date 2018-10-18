@@ -78,7 +78,7 @@
                     FROM tbldatadicionales AS dat
                     INNER JOIN tbljuzgados AS juz ON juz.CveAdscripcion = dat.cvejuzgado
                     WHERE
-                    dat.cvedatadi IN ('A072001', 'A084003','A072002')
+                    dat.cvedatadi IN ('A072001','A072002')
                     AND DATE_FORMAT(dat.fechacap,'%Y-%m') <= DATE_FORMAT(@fechaF,'%Y-%m') 
                     AND juz.cvedistrito = @idDisJuz
                     AND juz.NomJuzgado LIKE @nomJuz
@@ -90,7 +90,7 @@
                     FROM tbldatadicionales AS dat
                     INNER JOIN tbljuzgados AS juz ON juz.CveAdscripcion = dat.cvejuzgado
                     WHERE
-                    dat.cvedatadi IN ('A072001', 'A084003')
+                    dat.cvedatadi IN ('A072001')
                     AND DATE_FORMAT(dat.fechacap,'%Y-%m') <= DATE_FORMAT(@fechaF,'%Y-%m') 
                     AND juz.cvedistrito = @idDisJuz
                     AND juz.NomJuzgado LIKE @nomJuz
@@ -105,7 +105,7 @@
                     FROM tbldatadicionales AS dat
                     INNER JOIN tbljuzgados AS juz ON juz.CveAdscripcion = dat.cvejuzgado
                     WHERE
-                    dat.cvedatadi IN ('A072001', 'A084003','A072002')
+                    dat.cvedatadi IN ('A072001', 'A072002')
                     AND DATE_FORMAT(dat.fechacap,'%Y-%m') <= DATE_FORMAT(@fechaF,'%Y-%m')
                     AND juz.cvedistrito = @idDisJuz
                     AND juz.NomJuzgado LIKE @nomJuz

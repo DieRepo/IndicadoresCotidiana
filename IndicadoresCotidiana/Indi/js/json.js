@@ -43,9 +43,9 @@
     },
     9: {
         titulo: "",
-        desc1: "Total de audiencias no celebradas en el mes",
-        desc2: "Total de audiencias en el mes",
-        desc3: "Porcentaje de audiencias no celebradas respecto al total audiencias en el mes",
+        desc1: "Tiempo total de expedientes en tramite en el mes",
+        desc2: "Total de iniciados en el mes",
+        desc3: "Tiempo promedio de expedientes en tramite en el mes",
         sim: " hr"
     },
     11: {
@@ -145,7 +145,7 @@ var jsonMenu = {
     },
     id6: {
         id: "6",
-        titulo: "Iniciados",
+        titulo: "Audiencias",
         descripcion: "Audiencias",
         padre: "",
         submenu: "y",
@@ -172,8 +172,8 @@ var jsonMenu = {
     },
     id9: {
         id: "9",
-        titulo: "Tiempo promedio de rezago",
-        descripcion: "Tiempo promedio de rezago por juzgados",
+        titulo: "Tiempo promedio de expedientes en tramite",
+        descripcion: "Tiempo promedio expedientes en tramite por juzgados",
         padre: "",
         submenu: "n",
         hijos: {
@@ -181,7 +181,7 @@ var jsonMenu = {
     },
     id10: {
         id: "10",
-        titulo: "Iniciados",
+        titulo: "Exhortos",
         descripcion: "Exhortos",
         padre: "",
         submenu: "y",

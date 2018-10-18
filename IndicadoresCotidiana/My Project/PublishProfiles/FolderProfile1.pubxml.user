@@ -6,17 +6,17 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\carolina\Desktop\Indicadores</_PublishTargetUrl>
+    <_PublishTargetUrl>Z:\2018\Publicaciones\IndicadoresCotidiana\IndicadoresCotidiana</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/IndicadoresPjem.dll">
-      <publishTime>09/19/2018 16:28:48</publishTime>
+      <publishTime>09/25/2018 17:54:57</publishTime>
     </File>
     <File Include="bin/IndicadoresPjem.pdb">
-      <publishTime>09/19/2018 16:28:48</publishTime>
+      <publishTime>09/25/2018 17:54:57</publishTime>
     </File>
     <File Include="bin/IndicadoresPjem.xml">
-      <publishTime>09/19/2018 16:28:48</publishTime>
+      <publishTime>09/25/2018 17:54:56</publishTime>
     </File>
     <File Include="bin/IronPdf.dll">
       <publishTime>01/23/2018 05:35:08</publishTime>
@@ -79,7 +79,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/18/2018 18:54:05</publishTime>
     </File>
     <File Include="Indi/js/eventosIndicadores.js">
-      <publishTime>08/03/2018 17:17:11</publishTime>
+      <publishTime>09/25/2018 17:51:25</publishTime>
     </File>
     <File Include="Indi/js/json.js">
       <publishTime>07/31/2018 12:54:33</publishTime>
@@ -550,10 +550,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/04/2017 10:45:02</publishTime>
     </File>
     <File Include="js/ajax.js">
-      <publishTime>08/03/2018 17:18:09</publishTime>
+      <publishTime>09/25/2018 17:22:14</publishTime>
     </File>
     <File Include="js/Indicadores.js">
-      <publishTime>01/19/2018 16:06:35</publishTime>
+      <publishTime>09/25/2018 17:50:25</publishTime>
     </File>
     <File Include="js/plusTabs-master/plusTabs.jquery.json">
       <publishTime>12/19/2017 14:47:32</publishTime>
@@ -571,7 +571,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>07/31/2018 10:54:55</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/19/2018 16:28:49</publishTime>
+      <publishTime>09/25/2018 17:55:00</publishTime>
     </File>
     <File Include="Servicio.aspx">
       <publishTime>01/08/2018 12:18:02</publishTime>
@@ -1072,7 +1072,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/04/2017 10:45:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/03/2018 10:02:53</publishTime>
+      <publishTime>09/25/2018 17:54:57</publishTime>
     </File>
   </ItemGroup>
 </Project>

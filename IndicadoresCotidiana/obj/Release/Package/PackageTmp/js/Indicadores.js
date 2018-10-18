@@ -21,19 +21,16 @@ var indicadorIdTab = "";
 var indicadorIdTabGrafica = "";
 var anio = 0;
 var semanaDatos = 0;
-$(function () {
-    
+
+
+function inicioAplicacion() {
     var actionData = "{}";
     var datosServicio = new servicioAjax("POST", "Servicio.aspx/ObtenSemanas", actionData, ObtenSemanas);
     var fecha = new Date();
     anio = fecha.getFullYear();
-    semanaDatos = (semanaISO(fecha)-1)
-
+    semanaDatos = (semanaISO(fecha) - 1)
     var alto = ($(window).height());
-
-    //generaTambs();
-    
-});
+}
 
 function ObtenSemanas(Response) {
    // //console.log(Response);

@@ -63,6 +63,7 @@ function ejecuta(metodo, datos, callback) {
         $.ajax(
             {
                 url: urlF,
+                async: false,
                 data: datos,
                 dataType: "json",
                 type: 'post',
