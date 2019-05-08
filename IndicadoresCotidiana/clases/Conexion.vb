@@ -12,13 +12,14 @@ Public Class Conexion
         Try
             Dim connectionString As String = ""
             If intTipoConsulta = 1 Then
-                connectionString = ConfigurationManager.AppSettings("ConnectionLocal")
+                connectionString = ConfigurationManager.AppSettings("Produccion")
+
             ElseIf intTipoConsulta = 2 Then
-                connectionString = ConfigurationManager.AppSettings("ConnectionStringSigejepa")
-            ElseIf intTipoConsulta = 3 Then
-                connectionString = ConfigurationManager.AppSettings("ConnectionSEJ")
-            ElseIf intTipoConsulta = 4 Then
-                connectionString = ConfigurationManager.AppSettings("ConnectionSeg")
+                connectionString = ConfigurationManager.AppSettings("ProduccionDie")
+                'ElseIf intTipoConsulta = 3 Then
+                '    connectionString = ConfigurationManager.AppSettings("ConnectionSEJ")
+                'ElseIf intTipoConsulta = 4 Then
+                '    connectionString = ConfigurationManager.AppSettings("ConnectionSeguridad")
             End If
 
 

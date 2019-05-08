@@ -55,6 +55,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web.DynamicData" />
@@ -94,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\indicadores.css" />
-    <Content Include="img\carga.gif" />
     <Content Include="img\logopj.png" />
     <Content Include="img\pj.png" />
     <Content Include="img\tenor.gif" />
@@ -113,7 +114,6 @@
     <Content Include="Indi\dist\css\sb-admin-2.css" />
     <Content Include="Indi\dist\css\sb-admin-2.min.css" />
     <Content Include="Indi\dist\js\sb-admin-2.js" />
-    <Content Include="Indi\dist\js\sb-admin-2.min.js" />
     <Content Include="Indi\gulpfile.js" />
     <Content Include="Indi\index.html" />
     <Content Include="Indi\js\sb-admin-2.js" />
@@ -231,12 +231,17 @@
     <Compile Include="clases\DatosIndicadores.vb" />
     <Compile Include="clases\DatosIndicador.vb" />
     <Compile Include="clases\DatosIndicadorTabla.vb" />
+    <Compile Include="clases\DatosIndicadorTermino.vb" />
+    <Compile Include="clases\DatosIndicadorTramite.vb" />
     <Compile Include="clases\DatosJuicios.vb" />
+    <Compile Include="clases\DatosResoluciones.vb" />
+    <Compile Include="clases\DatosTramites.vb" />
     <Compile Include="clases\IndicadoresM.vb" />
     <Compile Include="clases\Conexion.vb" />
     <Compile Include="clases\Distritos.vb" />
     <Compile Include="clases\Indicadores.vb" />
     <Compile Include="clases\InfoGen.vb" />
+    <Compile Include="clases\Juzgado.vb" />
     <Compile Include="clases\Semanas.vb" />
     <Compile Include="Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>

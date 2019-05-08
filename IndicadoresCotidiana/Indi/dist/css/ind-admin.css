@@ -161,3 +161,26 @@ nav a {
     background-color: #fff;
 }
 */
+
+
+#complemento_temporal {
+    display: grid;
+    grid-template-columns: 49% 49%;
+}
+
+#complemento_temporal > div {
+    padding: 5px;
+}
+
+#maskRef {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.69);
+    justify-content: center;
+    align-items: center;
+    display: none;
+}

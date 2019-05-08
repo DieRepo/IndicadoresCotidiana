@@ -161,3 +161,13 @@ nav a {
     background-color: #fff;
 }
 */
+
+
+#complemento_temporal {
+    display: grid;
+    grid-template-columns: 49% 49%;
+}
+
+#complemento_temporal > div {
+    padding: 5px;
+}

@@ -56,7 +56,7 @@ Public Class Login
     Public Function VerificaSesion(usu As String, pass As String) As Boolean
         Try
             Dim Conexion As Conexion = New Conexion()
-            Dim Coneccion = Conexion.conexion_global(4)
+            Dim Coneccion = Conexion.conexion_global(1)
             Dim sqlquery As String = "SELECT if(count(idUsuario) = 1, true, false) existe FROM indicadores_seguridad.`seguridad.tblusuarios`
                                       WHERE usuario = @usu and pass = @pass and activo = 1;"
 
@@ -79,9 +79,9 @@ Public Class Login
                 Return False
             End If
 
-        Catch ex As Exception
+        Catch ex As MySqlException
             Console.WriteLine("Error al verificar la sesion")
-            Debug.WriteLine("Error al verificar la sesion")
+            Debug.WriteLine("Error al verificar la sesion" & ex.Message)
             Return False
         End Try
     End Function

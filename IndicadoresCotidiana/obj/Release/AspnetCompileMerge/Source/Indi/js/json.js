@@ -9,23 +9,23 @@
     3: {
         titulo: "",
         desc1: "Total de sentencias definitivas del mes",
-        desc2: "Total de sentencias del mes",
-        desc3: "Porcentaje de sentencias definitivas respecto al total de sentencias del mes",
+        desc2: "Total de concluidos en el mes",
+        desc3: "Porcentaje de sentencias definitivas respecto al total de concluidos del mes",
         sim: "%"
     },
     4: {
         titulo: "",
         desc1: "Total de sentencias interlocutorias del mes",
-        desc2: "Total de sentencias del mes",
-        desc3: "Porcentaje de sentencias interlocutorias respecto al total de sentencias del mes",
+        desc2: "Total de concluidos en el mes",
+        desc3: "Porcentaje de sentencias interlocutorias respecto al total de concluidos del mes",
         sim: "%"
     },
     14: {
         titulo: "",
-        desc1: "Tiempo en dicatar una terminación en horas durante el mes ",
+        desc1: "Tiempo en días en dictar una terminación en horas durante el mes ",
         desc2: "Numero de terminados en el mes",
-        desc3: "Tiempo promedio en horas para dictar una terminación en el mes",
-        sim: " hr."
+        desc3: "Tiempo promedio en días para dictar una sentencia difinitiva en el mes",
+        sim: " días"
     },
     7: {
         titulo: "",
@@ -43,10 +43,10 @@
     },
     9: {
         titulo: "",
-        desc1: "Total de audiencias no celebradas en el mes",
-        desc2: "Total de audiencias en el mes",
-        desc3: "Porcentaje de audiencias no celebradas respecto al total audiencias en el mes",
-        sim: " hr"
+        desc1: "Tiempo total en días de expedientes en tramite en el mes",
+        desc2: "Total de expdientes en trámite en el mes",
+        desc3: "Tiempo promedio en días de expedientes en tramite en el mes",
+        sim: " días"
     },
     11: {
         titulo: "",
@@ -71,11 +71,33 @@
     },
     15: {
         titulo: "",
-        desc1: "Tiempo en dicatar una terminación en horas durante el mes ",
+        desc1: "Tiempo en dicatar en días una terminación en horas durante el mes ",
         desc2: "Numero de terminados en el mes",
-        desc3: "Tiempo promedio en horas para dictar una terminación en el mes",
-        sim: " hr."
+        desc3: "Tiempo promedio en días para dictar una terminación en el mes",
+        sim: " días"
+    },
+    16: {
+        titulo: "",
+        desc1: "Numero de correcciones el mes ",
+        desc2: "",
+        desc3: "",
+        sim: ""
+    },
+    17: {
+        titulo: "",
+        desc1: "Número de iniciados en el mes ",
+        desc2: "Número de terminados en el mes ",
+        desc3: "Tasa de resolución en el mes ",
+        sim: "%"
     }
+    //,
+    //18: {
+    //    titulo: "",
+    //    desc1: "Número de audiencias videograbadas en el mes ",
+    //    desc2: "Total de audiencias en el mes",
+    //    desc3: "Porcentaje de audiencias videograbadas respecto al total audiencias en el mes",
+    //    sim: "%"
+    //}
 
 }
 
@@ -99,7 +121,7 @@ var jsonMenu = {
             id3: {
                 id: "3",
                 titulo: "Sentencias definitiva",
-                descripcion: "Sentencias definitiva por juzgados",
+                descripcion: "Sentencias definitivas por juzgados",
                 padre: "2",
                 submenu: "n",
                 hijos: {
@@ -145,7 +167,7 @@ var jsonMenu = {
     },
     id6: {
         id: "6",
-        titulo: "Iniciados",
+        titulo: "Audiencias",
         descripcion: "Audiencias",
         padre: "",
         submenu: "y",
@@ -168,12 +190,22 @@ var jsonMenu = {
                 hijos: {
                 }
             }
+            //},
+            //id18: {
+            //    id: "18",
+            //    titulo: "Audiencias videograbadas",
+            //    descripcion: "Audiencias videograbadas por juicios",
+            //    padre: "6",
+            //    submenu: "n",
+            //    hijos: {
+            //    }
+            //}
         }
     },
     id9: {
         id: "9",
-        titulo: "Tiempo promedio de rezago",
-        descripcion: "Tiempo promedio de rezago por juzgados",
+        titulo: "Tiempo promedio de expedientes en trámite",
+        descripcion: "Tiempo promedio expedientes en tramite por juzgados",
         padre: "",
         submenu: "n",
         hijos: {
@@ -181,7 +213,7 @@ var jsonMenu = {
     },
     id10: {
         id: "10",
-        titulo: "Iniciados",
+        titulo: "Exhortos",
         descripcion: "Exhortos",
         padre: "",
         submenu: "y",
@@ -214,6 +246,26 @@ var jsonMenu = {
                 }
             }
         }
-    },
+    }
+    /*,
+    id16: {
+        id: "16",
+        titulo: "Número de correcciones",
+        descripcion: "Tiempo promedio expedientes en tramite por juzgados",
+        padre: "",
+        submenu: "n",
+        hijos: {
+        }
+    }*/
+    ,
+    id17: {
+        id: "17",
+        titulo: "Tasa de resolución",
+        descripcion: "Tasa de resolución por juzgados",
+        padre: "",
+        submenu: "n",
+        hijos: {
+        }
+    }
 
 }

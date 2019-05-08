@@ -13,7 +13,7 @@ $(function () {
 
         var fecha = new Date();
         var anio = fecha.getFullYear();
-        var month = fecha.getMonth()+1;
+        var month = fecha.getMonth();
 
         var primerDia = new Date(anio, month, 1);
         var ultimoDia = new Date(anio, month-1, 0);
@@ -212,6 +212,8 @@ function ObtenJuzgados(Response) {
     }
 
     $('#Juzgados').val(Response.d[15].idDistrito);
+
+    cargaJuzgados(); 
 
    // var actionData = "{}";
    // var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenIndicadores", actionData, ValidaIndicadores);
@@ -816,12 +818,10 @@ function generaReportePdf() {
 
             var actionData = "{'idJuzgado': '" + idJuzgado + "','idIndicador': '" + Indicadores[0][x].idIndicador + "','fechaInicio': '" + ObtenFechaInicio(anio, mes) + "','fechaFin': '" + anio + "-" + mes + "-" + ultimoDia.getDate()+" 23:59:59'}";
 
-            var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenCalculoIndicadores", actionData, CargadDatosTabla);
-
-            
-        }
+            var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenCalculoIndicadores", actionData, CargadDatosTabla);          
+            }
   
-} catch (ex) { console.log(ex); }
+        } catch (ex) { console.log(ex); }
 }
 
 function CargadDatosTabla(Response) {

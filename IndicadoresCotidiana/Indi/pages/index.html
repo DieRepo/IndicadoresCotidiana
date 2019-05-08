@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -156,22 +157,24 @@
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form selects-change">
                                 <select id="Juzgados" class="form-control form-control-lg"></select>
-                                <select id="Anios" class="form-control form-control-lg"></select>
-                                <select id="Meses" class="form-control form-control-lg"></select>
                                 <select id="Materia" class="form-control form-control-lg">
                                     <option value="civil" selected>Civil</option>
                                     <option value="familiar">Familiar</option>
                                     <option value="mercantil">Mercantil</option>
                                 </select>
+                                <select id="Juzgado" class="form-control form-control-lg"></select>
+                                <select id="Anios" class="form-control form-control-lg"></select>
+                                <select id="Meses" class="form-control form-control-lg"></select>
+
 
                             </div>
                         </li>
 
                         <li class="click">
-                            <a id="inf-general"><i class="fa fa-area-chart fa-fw"></i> INFORMACION GENERAL</a>
+                            <a id="inf-general"><i class="fa fa-area-chart fa-fw"></i> INFORMACIÓN GENERAL</a>
                         </li>
                         <li class="click">
-                            <a id="gen-reporte"><i class="fa fa-pencil-square-o fa-fw"></i>GENERA REPORTE</a>
+                            <a id="gen-reporte"><i class="fa fa-pencil-square-o fa-fw"></i>GENERA TABLERO</a>
                         </li>
                         <li id="Indicadores-materia">
                             <a id="#"><i class="fa fa-line-chart fa-fw"></i> INDICADORES <span class="fa arrow"></span></a>
@@ -195,8 +198,8 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
+            <div class="row" id="datos">
+                <div class="col-lg-4 col-md-6" style="display:none">
                     <div class="panel panel-blue">
                         <div class="panel-heading">
                             <div class="row">
@@ -211,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" style="display:none">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -227,7 +230,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" style="display:none">
                     <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
@@ -244,11 +247,11 @@
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-lg-8">
+            <div id="graficas" class="row">
+                <div class="col-lg-8" style="display:none">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Logros de los ultimos 4 mese
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Estadistica de los ultimos 4 meses
                             <div class="pull-right">
                             </div>
                         </div>
@@ -261,10 +264,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="display:none">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> ESTATUS MENSUAL
+                            <i class="fa fa-bar-chart-o fa-fw"></i> PROMEDIO
                         </div>
                         <div class="panel-body">
                             <div id="morris-donut-chart"></div>
@@ -283,6 +286,22 @@
 
             <div id="Complemento" class="row" style="margin-bottom: 10px; padding-bottom: 10px;">
                 <button class="btn" id="button-pdf-exporta" style="display: none; background-color: white;"> Exporta a PDF</button>
+            </div>
+
+
+            <div id="tabla-div" class="row" style="margin-bottom: 10px; padding-bottom: 10px; display: none">
+                <table id="tabla-pjem">
+                    <thead>
+                        <tr>
+                            <th>Expediente</th>
+                            <th>Fecha radicacion</th>
+                            <th>Fecha consulta</th>
+                            <th>Juicio</th>
+                            <th>Tiempo en tramite (días)</th>
+                            <th>Juzgado</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
 
         </div>
@@ -320,10 +339,14 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../../js/ajax.js"></script>
-    <!--script src="../../js/html2canvas.js"></!--script-->
+    <script src="../../js/html2canvas.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
     <script src="../js/eventosIndicadores.js"></script>
     <script src="../js/json.js"></script>
+
+    <div id="maskRef" style="font-size: 35vh">
+        <i class="fas fa-spinner fa-pulse" style="color: white"></i>
+    </div>
 
 </body>
 
