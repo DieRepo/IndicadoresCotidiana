@@ -18,200 +18,46 @@ $(function () {
         var primerDia = new Date(anio, month, 1);
         var ultimoDia = new Date(anio, month-1, 0);
 
-    //console.log("ultimoDia *** " + ultimoDia.getDate());
-
-        var actionData1 = "{'fechaInicio': '" + ObtenFechaInicio(anio, month) + "','fechaFin': '" + anio + "-" + month + "-" + ultimoDia.getDate()+" 23:59:59'}";
-        var datosServicio2 = new servicioAjax("POST", "../../Servicio.aspx/ObtenInformacionGeneral", actionData1, GeneraInfoGeneral);
-
         var actionData = "{}";
+        
         var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenDistritos", actionData, ObtenJuzgados);
-   
 
-        for (var x = anio; x>2016; x--) {
+        for (var x = anio; x>=2019; x--) {
                $('#Anios').append('<option value="' +x+'" selected="selected">'+x+'</option>');
            }
 
         $('#Anios').val(anio);
 
+        // MESES 
+
         for (var x = 1; x <= month; x++) {
-            $('#Meses').append('<option value="' + x + '">' + Meses[x-1]+'</option>');
+            if (anio === 2019) {
+                if (x >= 9) {
+                    $('#Meses').append('<option value="' + x + '">' + Meses[x - 1] + '</option>');
+                }
+            } else {
+                $('#Meses').append('<option value="' + x + '">' + Meses[x - 1] + '</option>');
+            }
         }
         
         $('#Meses').val(month);
 
-        var ancho = ($(window).width()); 
-        var alto = ($(window).height());
+        //
 
-        $("#dialog").dialog({
-            autoOpen: false,
-            width: ancho - 20,
-            height: alto - 50,
-            show: {
-                effect: "blind",
-                duration: 1000
-            },
-            hide: {
-                effect: "explode",
-                duration: 1000
-            },
-            modal: true,
-            
-            buttons: {
-                "Cerrar": function () {
-                    $(this).dialog("close");
-                }
-            },
-            close: function (event, ui) {
-                try {
-                    var table = $('#example').DataTable();
-
-                    table
-                        .clear()
-                        .draw();
-                } catch (ex) { }
-            }
-        });
-                
-        $("#GenRepor").on("click", function () {
-            $("#dialog").dialog("open");
-            
-            $("#dialog").dialog({ title:"INDICADORES DE " + $("#Juzgados option:selected").text()});
-
-            if (!$.fn.DataTable.isDataTable('#example')) {
-                $('#example').DataTable({
-                    scrollY: ((alto - 80)),
-                    scrollX: true,
-                    scrollCollapse: true,
-                    paging: true,
-                    dom: 'Bfrtip',
-                    buttons: [
-                    /*'copy', 'csv', 'excel',*/ {
-                            extend: 'pdfHtml5',
-                            download: 'open',
-                            messageTop: "INDICADORES DEL JUZGADO DE " + $("#Juzgados option:selected").text(),
-                            orientation: 'landscape',
-                            pageSize: 'LEGAL',
-                            customize: function (doc) {
-                                doc.content.splice(1, 0, {
-                                    margin: [0, 0, 0, 12],
-                                    alignment: 'right',
-                                    image: 'data:image/jpeg;base64,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'
-                                });
-                            }
-
-                        }
-
-                    ],
-                    "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-
-                        $(nRow).find('td:eq(5)').css('color', ValidaEstatusIndicador(aData[0], aData[5]))
-                        $(nRow).find('td:eq(6)').css('color', ValidaEstatusIndicador(aData[0], aData[6]))
-                        $(nRow).find('td:eq(7)').css('color', ValidaEstatusIndicador(aData[0], aData[7]))
-                        $(nRow).find('td:eq(8)').css('color', ValidaEstatusIndicador(aData[0], aData[8]))
-
-                    },
-                    "language": {
-                        "sProcessing": "Procesando...",
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sZeroRecords": "No se encontraron resultados",
-                        "sEmptyTable": "Ningun dato disponible en esta tabla",
-                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                        "sInfoPostFix": "",
-                        "sSearch": "Buscar:",
-                        "sUrl": "",
-                        "sInfoThousands": ",",
-                        "sLoadingRecords": "Cargando...",
-                        "oPaginate": {
-                            "sFirst": "Primero",
-                            "sLast": "Último",
-                            "sNext": "Siguiente",
-                            "sPrevious": "Anterior"
-                        },
-                        "oAria": {
-                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                        },
-                        "buttons": {
-                            "copy": "Copiar",
-                            "print": "IMPRIMIR"
-                        },
-                        "columnDefs": [
-                            { "title": "My column title", "targets": 0 }
-                        ]
-                    }
-                });
-            }
-            generaReportePdf();
-
-        });
-        
-        $("#Exporta").on("click", function () {
-            try {
-                      
-                var pdf = new jsPDF('p', 'pt', 'a4', true);
-                pdf.internal.scaleFactor = 1.75;
-                //pdf.text(20, 30, "Dashboard");
-                margins = {
-                    top: 40,
-                    bottom: 60,
-                    left: 40,
-                    width: 522
-                };
-
-                var options = {
-                    pagesplit: true,
-                    background: '#FFFFFF',
-                    format: 'PNG',
-                    padding: 50,
-                    margins: 40             
-                }
-                
-                //pdf.addPage();
-                pdf.addHTML($("#Complemento")[0],
-                    50, 10, { pagesplit: true, background: '#FFFFFF' },
-                    function () {
-                     pdf.save("INDICADORES DEL JUZGADO DE " + $("#Juzgados option:selected").text());
-                    }, margins
-                );
-
-
-            } catch (ex) { console.log(ex); }
-
-        });
-
-        $("#ReporteGeneral").on("click", function () {
-            try {
-               
-                
-                var idJuzgado = $("#Juzgados").val();
-                var anioG = $("#Anios").val();
-                var mes = $("#Meses").val();
-
-                var primerDia = new Date(anioG, mes, 1);
-                var ultimoDia = new Date(anioG, mes, 0);
-
-                var actionData1 = "{'fechaInicio': '" + ObtenFechaInicio(anioG, mes) + "','fechaFin': '" + anioG + "-" + mes + "-" + ultimoDia.getDate() +" 23:59:59'}";
-                var datosServicio2 = new servicioAjax("POST", "../../Servicio.aspx/ObtenInformacionGeneral", actionData1, generaReporteGeneralPdf);
-               
-            } catch (ex) { console.log(ex); }
-
-        });
-
-    //var actionData2 = "{}";
-    //var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenSemanas", actionData2, ObtenSemanas);
     } catch (ex) { console.log(ex); }
 });
 
 function ObtenJuzgados(Response) {
     //console.log(Response);
 
+
     for (var x = 0; x < Response.d.length; x++) {
         $('#Juzgados').append('<option value="' + Response.d[x].idDistrito + '" selected="selected">' + Response.d[x].Descripcion + '</option>');
     }
 
     $('#Juzgados').val(Response.d[15].idDistrito);
+
+    ValidaUsuario();
 
     cargaJuzgados(); 
 
@@ -324,7 +170,6 @@ function generaReporteGeneralPdf(Response) {
 
     } catch (ex) { console.log(ex); }
 }
-
 
 function ValidaIndicadores(Response) {
     try {
@@ -840,7 +685,7 @@ function CargadDatosTabla(Response) {
         if (Response.d[0].idJuzgado == "0") {
             for (var x = 0; x < Indicadores[0].length; x++) {
 
-                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador, )) {
+                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador )) {
                     var rowNode = table
                         .row.add([Response.d[0].idIndicador, Indicadores[0][x].Descripcion, 0, 0, obtenLabels(parseInt(Response.d[0].idIndicador)), 0, 0, 0,0])
                         .draw()
@@ -850,7 +695,7 @@ function CargadDatosTabla(Response) {
         } else {
             for (var x = 0; x < Indicadores[0].length; x++) {
                
-                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador, )) {
+                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador)) {
                     
                     var rowNode = table
                         .row.add([
@@ -1201,365 +1046,5 @@ function generaReporteHtml(Response) {
     } catch (ex) { console.log(ex); }
 }
 
-function ValidaEstatusIndicador(indicador, calculo) {
-    try {
-        var status = "";
-
-        if (indicador == 1) {
-            if (calculo > 5) {
-                status = "#E60F08"
-            } else if (calculo <= 5) {
-                status = "#02B005";
-            }
-
-        } else if (indicador == 2) {
-            if (calculo > 10) {
-                status = "#E60F08"
-            } else if (calculo <= 10) {
-                status = "#02B005";
-            }
-
-        } else if (indicador == 3) {
-            if (calculo > 30) {
-                status = "#E60F08"
-            } else if (calculo <= 30) {
-                status = "#02B005";
-            }
-
-        } /*else if (indicador == 3) {
-            if (calculo >= 100) {
-                status = "#02B005";
-            } else if (calculo < 100) {
-                status = "#E60F08"
-            }
-
-
-        } */else if (indicador == 4) {
-            if (calculo >= 100) {
-                status = "#02B005";
-            } else if (calculo < 100) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 5) {
-            if (calculo <= 6) {
-                status = "#02B005";
-            } else if (calculo > 6) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 6) {
-            if (calculo <= 24) {
-                status = "#02B005";
-            } else if (calculo > 24) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 7 || indicador == 8 || indicador == 9 || indicador == 10) {
-            if (calculo >= 100) {
-                status = "#02B005";
-            } else if (calculo < 100) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 11) {
-            if (calculo <= 5) {
-                status = "#02B005";
-            } else if (calculo > 5) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 12 || indicador == 13 || indicador == 14 || indicador == 15) {
-            if (calculo <= 10) {
-                status = "#02B005";
-            } else if (calculo > 10) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 16) {
-            status = "#02B005";
-            /* if (calculo <= 24) {
-                 status = "#02B005";
-             } else if (calculo > 24) {
-                 status = "#E60F08"
-             }*/
-
-        } else if (indicador == 17) {
-            if (calculo >= 80) {
-                status = "#02B005";
-            } else if (calculo < 80) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 18) {
-            if (calculo <= 60) {
-                status = "#02B005";
-            } else if (calculo > 60) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 19) {
-            if (calculo >= 40 && calculo <= 70) {
-                status = "#02B005";
-            } else {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 20) {
-            if (calculo >= 50 && calculo <= 70) {
-                status = "#02B005";
-            } else {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 21) {
-            if (calculo == 100) {
-                status = "#02B005";
-            } else {
-                status = "#E60F08"
-            }
-
-        }
-
-
-        return status;
-    } catch (ex) { }
-}
-
-function validaInformacionGeneral(indicador) {
-    try {
-       if (indicador == 1) {
-            //$("#Desc1").text("0");
-            $("#TexInd" + indicador +"_1").text("Total de encuetas en el mes:");
-
-            // $("#Desc2").text("0");
-            $("#TexInd" + indicador + "_2").text("Numero de quejas en el mes:");
-
-            $("#DescInd" + indicador + "_3").text("5% o menos");
-            $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 2) {
-
-           $("#TexInd" + indicador + "_1").text("Horas de solicitud:");
-
-           $("#TexInd" + indicador + "_2").text("Horas del despacho de la solicitud:");
-
-           $("#DescInd" + indicador + "_3").text("10 min o menos");
-            $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 3) {
-         
-            $("#TexInd" + indicador + "_1").text("Total de causas en el mes:");
-
- 
-            $("#TexInd" + indicador + "_2").text("Total de causas sin salida:");
-
-            $("#DescInd" + indicador + "_3").text("30% o menos");
-            $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 4) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Total de causas en el mes:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de causas con salida:");
-
-              $("#DescInd" + indicador + "_3").text("100% o mas");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 5) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Total de Meses:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de causas en tramite:");
-
-              $("#DescInd" + indicador + "_3").text("6 meses o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 6) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Total de causas en el mes:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de horas al mes:");
-
-              $("#DescInd" + indicador + "_3").text("Tiempo marcado por CNPP");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 7) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Total dentro del termino:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de audiencias programadas:");
-
-             $("#DescInd" + indicador + "_3").text("100%");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 8) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Total de dentro del termino:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de audiencias programadas:");
-
-             $("#DescInd" + indicador + "_3").text("100%");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-       } else if (indicador == 9 || indicador == 10) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Total de dentro del termino:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de audiencias programadas:");
-
-              $("#DescInd" + indicador + "_3").text("100%");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 11) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Audiencias desistidas por juzgado:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de causas turnadas por juzgado:");
-
-             $("#DescInd" + indicador + "_3").text("5% o menos");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 12) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Audiencias diferidas por juzgado:");
-
-              // $("#Desc2").text("0");text("0");
-           $("#TexInd" + indicador + "_2").text("Total de audiencias programadas por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("10% o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 13) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Audiencias diferidas por juzgado:");
-
-              // $("#Desc2").text("0");text("0");
-           $("#TexInd" + indicador + "_2").text("Total de audiencias programadas por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("10% o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-       } else if (indicador == 14 || indicador == 15) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Audiencias diferidas por juzgado:");
-
-              // $("#Desc2").text("0");text("0");
-           $("#TexInd" + indicador + "_2").text("Total de audiencias programadas por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("10% o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 16) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Audiencias programadas en el mes:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Costo operativo por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 17) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Audiencias iniciadas igual o antes de la hora programada:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de Audiencias programadas:");
-
-             $("#DescInd" + indicador + "_3").text("80% o mas");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 18) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador + "_1").text("Suma (inicio real - inicio programado):");
-           
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Suma (fin real - fin programado):");
-
-              $("#DescInd" + indicador + "_3").text("60 min o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 19) {
-             //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Horas de duracion de las audiencias por juzgado:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("horas laborales del periodo:");
-
-             $("#DescInd" + indicador + "_3").text("mas del 40%,menos del 70%");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 20) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Horas de duracion de las audiencias por sala:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("horas laborales del periodo:");
-
-              $("#DescInd" + indicador + "_3").text("mas del 50%,menos del 70%");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 21) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("total de audiencias celebradas:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de audiencias respaldadas:");
-
-              $("#DescInd" + indicador + "_3").text("100%");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        }
-        
-    } catch (ex) { console.log(ex); }
-}
-
-function agregaDescripcion(indicador) {
-    try {
-        var descripcion = "";
-        if (indicador == 1 || indicador == 3 || indicador == 4 || indicador == 7 || indicador == 8 || indicador == 9 || indicador == 10 || indicador == 11 || indicador == 12
-            || indicador == 13 || indicador == 14 || indicador == 15 || indicador == 17 || indicador == 19 || indicador == 20 || indicador == 21) {
-            descripcion = "%";
-        } else if (indicador == 2 || indicador == 6 || indicador == 18) {
-            descripcion = "minutos";
-            
-        } else if (indicador == 5) {
-            descripcion = "meses";
-
-        }else if (indicador == 16) {
-            descripcion = " pesos";
-        } 
-        return descripcion;
-    } catch (ex) { console.log(ex); }
-}
-//Loads the correct sidebar on window load,
-//collapses the sidebar on window resize.
-// Sets the min-height of #page-wrapper to window size
-$(function() {
-    $(window).bind("load resize", function() {
-        var topOffset = 50;
-        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
-        if (width < 768) {
-            $('div.navbar-collapse').addClass('collapse');
-            topOffset = 100; // 2-row-menu
-        } else {
-            $('div.navbar-collapse').removeClass('collapse');
-        }
-
-        var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
-        height = height - topOffset;
-        if (height < 1) height = 1;
-        if (height > topOffset) {
-           // $("#page-wrapper").css("min-height", (height) + "px");
-           
-        }
-    });
-
-    var url = window.location;
-    // var element = $('ul.nav a').filter(function() {
-    //     return this.href == url;
-    // }).addClass('active').parent().parent().addClass('in').parent();
-    var element = $('ul.nav a').filter(function() {
-        return this.href == url;
-    }).addClass('active').parent();
-
-    while (true) {
-        if (element.is('li')) {
-            element = element.parent().addClass('in').parent();
-        } else {
-            break;
-        }
-    }
-    
-});
 
 

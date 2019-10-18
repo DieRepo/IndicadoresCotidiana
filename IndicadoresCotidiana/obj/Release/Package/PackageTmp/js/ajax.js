@@ -19,7 +19,7 @@ function servicioAjax(metodo, urlServicio, datos, FunctionRespuesta) {
                 }
             });
     } catch (ex) {
-        console.error(ex.toString())
+        console.error(ex.toString());
     }
 }
 

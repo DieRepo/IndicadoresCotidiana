@@ -19,21 +19,24 @@ $(function () {
         var ultimoDia = new Date(anio, month-1, 0);
 
     //console.log("ultimoDia *** " + ultimoDia.getDate());
+        
+        var actionData1 = "{'fechaInicio': '" + ObtenFechaInicio(anio, month) + "','fechaFin': '" + anio + "-" + month + "-" + ultimoDia.getDate() + " 23:59:59'}";
 
-        var actionData1 = "{'fechaInicio': '" + ObtenFechaInicio(anio, month) + "','fechaFin': '" + anio + "-" + month + "-" + ultimoDia.getDate()+" 23:59:59'}";
-        var datosServicio2 = new servicioAjax("POST", "../../Servicio.aspx/ObtenInformacionGeneral", actionData1, GeneraInfoGeneral);
+         //var datosServicio2 = new servicioAjax("POST", "../../Servicio.aspx/ObtenInformacionGeneral", actionData1, GeneraInfoGeneral);
 
         var actionData = "{}";
-        var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenDistritos", actionData, ObtenJuzgados);
-   
 
-        for (var x = anio; x>2016; x--) {
+        
+        var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenDistritos", actionData, ObtenJuzgados);
+
+        for (var x = anio; x>=2019; x--) {
                $('#Anios').append('<option value="' +x+'" selected="selected">'+x+'</option>');
            }
 
         $('#Anios').val(anio);
 
         for (var x = 1; x <= month; x++) {
+
             $('#Meses').append('<option value="' + x + '">' + Meses[x-1]+'</option>');
         }
         
@@ -207,11 +210,14 @@ $(function () {
 function ObtenJuzgados(Response) {
     //console.log(Response);
 
+
     for (var x = 0; x < Response.d.length; x++) {
         $('#Juzgados').append('<option value="' + Response.d[x].idDistrito + '" selected="selected">' + Response.d[x].Descripcion + '</option>');
     }
 
     $('#Juzgados').val(Response.d[15].idDistrito);
+
+    ValidaUsuario();
 
     cargaJuzgados(); 
 
@@ -324,7 +330,6 @@ function generaReporteGeneralPdf(Response) {
 
     } catch (ex) { console.log(ex); }
 }
-
 
 function ValidaIndicadores(Response) {
     try {
@@ -840,7 +845,7 @@ function CargadDatosTabla(Response) {
         if (Response.d[0].idJuzgado == "0") {
             for (var x = 0; x < Indicadores[0].length; x++) {
 
-                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador, )) {
+                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador )) {
                     var rowNode = table
                         .row.add([Response.d[0].idIndicador, Indicadores[0][x].Descripcion, 0, 0, obtenLabels(parseInt(Response.d[0].idIndicador)), 0, 0, 0,0])
                         .draw()
@@ -850,7 +855,7 @@ function CargadDatosTabla(Response) {
         } else {
             for (var x = 0; x < Indicadores[0].length; x++) {
                
-                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador, )) {
+                if (parseInt(Response.d[0].idIndicador) == parseInt(Indicadores[0][x].idIndicador)) {
                     
                     var rowNode = table
                         .row.add([
@@ -1201,365 +1206,5 @@ function generaReporteHtml(Response) {
     } catch (ex) { console.log(ex); }
 }
 
-function ValidaEstatusIndicador(indicador, calculo) {
-    try {
-        var status = "";
-
-        if (indicador == 1) {
-            if (calculo > 5) {
-                status = "#E60F08"
-            } else if (calculo <= 5) {
-                status = "#02B005";
-            }
-
-        } else if (indicador == 2) {
-            if (calculo > 10) {
-                status = "#E60F08"
-            } else if (calculo <= 10) {
-                status = "#02B005";
-            }
-
-        } else if (indicador == 3) {
-            if (calculo > 30) {
-                status = "#E60F08"
-            } else if (calculo <= 30) {
-                status = "#02B005";
-            }
-
-        } /*else if (indicador == 3) {
-            if (calculo >= 100) {
-                status = "#02B005";
-            } else if (calculo < 100) {
-                status = "#E60F08"
-            }
-
-
-        } */else if (indicador == 4) {
-            if (calculo >= 100) {
-                status = "#02B005";
-            } else if (calculo < 100) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 5) {
-            if (calculo <= 6) {
-                status = "#02B005";
-            } else if (calculo > 6) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 6) {
-            if (calculo <= 24) {
-                status = "#02B005";
-            } else if (calculo > 24) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 7 || indicador == 8 || indicador == 9 || indicador == 10) {
-            if (calculo >= 100) {
-                status = "#02B005";
-            } else if (calculo < 100) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 11) {
-            if (calculo <= 5) {
-                status = "#02B005";
-            } else if (calculo > 5) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 12 || indicador == 13 || indicador == 14 || indicador == 15) {
-            if (calculo <= 10) {
-                status = "#02B005";
-            } else if (calculo > 10) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 16) {
-            status = "#02B005";
-            /* if (calculo <= 24) {
-                 status = "#02B005";
-             } else if (calculo > 24) {
-                 status = "#E60F08"
-             }*/
-
-        } else if (indicador == 17) {
-            if (calculo >= 80) {
-                status = "#02B005";
-            } else if (calculo < 80) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 18) {
-            if (calculo <= 60) {
-                status = "#02B005";
-            } else if (calculo > 60) {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 19) {
-            if (calculo >= 40 && calculo <= 70) {
-                status = "#02B005";
-            } else {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 20) {
-            if (calculo >= 50 && calculo <= 70) {
-                status = "#02B005";
-            } else {
-                status = "#E60F08"
-            }
-
-        } else if (indicador == 21) {
-            if (calculo == 100) {
-                status = "#02B005";
-            } else {
-                status = "#E60F08"
-            }
-
-        }
-
-
-        return status;
-    } catch (ex) { }
-}
-
-function validaInformacionGeneral(indicador) {
-    try {
-       if (indicador == 1) {
-            //$("#Desc1").text("0");
-            $("#TexInd" + indicador +"_1").text("Total de encuetas en el mes:");
-
-            // $("#Desc2").text("0");
-            $("#TexInd" + indicador + "_2").text("Numero de quejas en el mes:");
-
-            $("#DescInd" + indicador + "_3").text("5% o menos");
-            $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 2) {
-
-           $("#TexInd" + indicador + "_1").text("Horas de solicitud:");
-
-           $("#TexInd" + indicador + "_2").text("Horas del despacho de la solicitud:");
-
-           $("#DescInd" + indicador + "_3").text("10 min o menos");
-            $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 3) {
-         
-            $("#TexInd" + indicador + "_1").text("Total de causas en el mes:");
-
- 
-            $("#TexInd" + indicador + "_2").text("Total de causas sin salida:");
-
-            $("#DescInd" + indicador + "_3").text("30% o menos");
-            $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 4) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Total de causas en el mes:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de causas con salida:");
-
-              $("#DescInd" + indicador + "_3").text("100% o mas");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 5) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Total de Meses:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de causas en tramite:");
-
-              $("#DescInd" + indicador + "_3").text("6 meses o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 6) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Total de causas en el mes:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de horas al mes:");
-
-              $("#DescInd" + indicador + "_3").text("Tiempo marcado por CNPP");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 7) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Total dentro del termino:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de audiencias programadas:");
-
-             $("#DescInd" + indicador + "_3").text("100%");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 8) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Total de dentro del termino:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de audiencias programadas:");
-
-             $("#DescInd" + indicador + "_3").text("100%");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-       } else if (indicador == 9 || indicador == 10) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Total de dentro del termino:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de audiencias programadas:");
-
-              $("#DescInd" + indicador + "_3").text("100%");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 11) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Audiencias desistidas por juzgado:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de causas turnadas por juzgado:");
-
-             $("#DescInd" + indicador + "_3").text("5% o menos");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 12) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Audiencias diferidas por juzgado:");
-
-              // $("#Desc2").text("0");text("0");
-           $("#TexInd" + indicador + "_2").text("Total de audiencias programadas por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("10% o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 13) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Audiencias diferidas por juzgado:");
-
-              // $("#Desc2").text("0");text("0");
-           $("#TexInd" + indicador + "_2").text("Total de audiencias programadas por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("10% o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-       } else if (indicador == 14 || indicador == 15) {
-              //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Audiencias diferidas por juzgado:");
-
-              // $("#Desc2").text("0");text("0");
-           $("#TexInd" + indicador + "_2").text("Total de audiencias programadas por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("10% o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 16) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Audiencias programadas en el mes:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Costo operativo por juzgado:");
-
-              $("#DescInd" + indicador + "_3").text("");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 17) {
-             //$("#Desc1").text("0");text("0");
-             $("#TexInd" + indicador +"_1").text("Audiencias iniciadas igual o antes de la hora programada:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("Total de Audiencias programadas:");
-
-             $("#DescInd" + indicador + "_3").text("80% o mas");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 18) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador + "_1").text("Suma (inicio real - inicio programado):");
-           
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Suma (fin real - fin programado):");
-
-              $("#DescInd" + indicador + "_3").text("60 min o menos");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 19) {
-             //$("#Desc1").text("0");text("0");
-           $("#TexInd" + indicador + "_1").text("Horas de duracion de las audiencias por juzgado:");
-
-             // $("#Desc2").text("0");text("0");
-             $("#TexInd" + indicador + "_2").text("horas laborales del periodo:");
-
-             $("#DescInd" + indicador + "_3").text("mas del 40%,menos del 70%");
-             $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 20) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("Horas de duracion de las audiencias por sala:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("horas laborales del periodo:");
-
-              $("#DescInd" + indicador + "_3").text("mas del 50%,menos del 70%");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        } else if (indicador == 21) {
-              //$("#Desc1").text("0");text("0");
-              $("#TexInd" + indicador +"_1").text("total de audiencias celebradas:");
-
-              // $("#Desc2").text("0");text("0");
-              $("#TexInd" + indicador + "_2").text("Total de audiencias respaldadas:");
-
-              $("#DescInd" + indicador + "_3").text("100%");
-              $("#TexInd" + indicador + "_3").text("Meta:");
-        }
-        
-    } catch (ex) { console.log(ex); }
-}
-
-function agregaDescripcion(indicador) {
-    try {
-        var descripcion = "";
-        if (indicador == 1 || indicador == 3 || indicador == 4 || indicador == 7 || indicador == 8 || indicador == 9 || indicador == 10 || indicador == 11 || indicador == 12
-            || indicador == 13 || indicador == 14 || indicador == 15 || indicador == 17 || indicador == 19 || indicador == 20 || indicador == 21) {
-            descripcion = "%";
-        } else if (indicador == 2 || indicador == 6 || indicador == 18) {
-            descripcion = "minutos";
-            
-        } else if (indicador == 5) {
-            descripcion = "meses";
-
-        }else if (indicador == 16) {
-            descripcion = " pesos";
-        } 
-        return descripcion;
-    } catch (ex) { console.log(ex); }
-}
-//Loads the correct sidebar on window load,
-//collapses the sidebar on window resize.
-// Sets the min-height of #page-wrapper to window size
-$(function() {
-    $(window).bind("load resize", function() {
-        var topOffset = 50;
-        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
-        if (width < 768) {
-            $('div.navbar-collapse').addClass('collapse');
-            topOffset = 100; // 2-row-menu
-        } else {
-            $('div.navbar-collapse').removeClass('collapse');
-        }
-
-        var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
-        height = height - topOffset;
-        if (height < 1) height = 1;
-        if (height > topOffset) {
-           // $("#page-wrapper").css("min-height", (height) + "px");
-           
-        }
-    });
-
-    var url = window.location;
-    // var element = $('ul.nav a').filter(function() {
-    //     return this.href == url;
-    // }).addClass('active').parent().parent().addClass('in').parent();
-    var element = $('ul.nav a').filter(function() {
-        return this.href == url;
-    }).addClass('active').parent();
-
-    while (true) {
-        if (element.is('li')) {
-            element = element.parent().addClass('in').parent();
-        } else {
-            break;
-        }
-    }
-    
-});
 
 

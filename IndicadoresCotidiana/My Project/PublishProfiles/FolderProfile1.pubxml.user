@@ -6,17 +6,17 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>Z:\2018\Publicaciones\IndicadoresCotidiana\IndicadoresCotidiana</_PublishTargetUrl>
+    <_PublishTargetUrl>Z:\2018\Publicaciones\IndicadoresGestion</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/IndicadoresPjem.dll">
-      <publishTime>03/27/2019 13:04:20</publishTime>
+      <publishTime>10/14/2019 16:40:32</publishTime>
     </File>
     <File Include="bin/IndicadoresPjem.pdb">
-      <publishTime>03/27/2019 13:04:20</publishTime>
+      <publishTime>10/14/2019 16:40:32</publishTime>
     </File>
     <File Include="bin/IndicadoresPjem.xml">
-      <publishTime>03/27/2019 13:04:20</publishTime>
+      <publishTime>10/14/2019 16:40:32</publishTime>
     </File>
     <File Include="bin/IronPdf.dll">
       <publishTime>01/23/2018 05:35:08</publishTime>
@@ -25,7 +25,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/22/2017 12:09:38</publishTime>
     </File>
     <File Include="css/indicadores.css">
-      <publishTime>05/18/2018 10:49:24</publishTime>
+      <publishTime>10/11/2019 10:40:55</publishTime>
     </File>
     <File Include="img/carga.gif">
       <publishTime>05/18/2018 13:06:43</publishTime>
@@ -58,7 +58,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/15/2018 12:35:14</publishTime>
     </File>
     <File Include="Indi/dist/css/ind-admin.css">
-      <publishTime>02/20/2019 13:28:03</publishTime>
+      <publishTime>10/14/2019 16:34:43</publishTime>
     </File>
     <File Include="Indi/dist/css/sb-admin-2.css">
       <publishTime>05/21/2018 11:21:06</publishTime>
@@ -67,7 +67,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/13/2018 09:34:48</publishTime>
     </File>
     <File Include="Indi/dist/js/sb-admin-2.js">
-      <publishTime>02/12/2019 13:28:35</publishTime>
+      <publishTime>10/14/2019 10:06:23</publishTime>
     </File>
     <File Include="Indi/dist/js/sb-admin-2.min.js">
       <publishTime>02/13/2018 09:35:34</publishTime>
@@ -79,10 +79,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/18/2018 18:54:05</publishTime>
     </File>
     <File Include="Indi/js/eventosIndicadores.js">
-      <publishTime>03/27/2019 12:54:23</publishTime>
+      <publishTime>10/07/2019 12:23:49</publishTime>
+    </File>
+    <File Include="Indi/js/indicadoresGestion.js">
+      <publishTime>10/14/2019 16:30:05</publishTime>
     </File>
     <File Include="Indi/js/json.js">
-      <publishTime>03/27/2019 12:40:30</publishTime>
+      <publishTime>10/09/2019 17:54:47</publishTime>
     </File>
     <File Include="Indi/js/sb-admin-2.js">
       <publishTime>02/13/2018 09:35:44</publishTime>
@@ -121,7 +124,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/04/2017 10:45:02</publishTime>
     </File>
     <File Include="Indi/pages/index.html">
-      <publishTime>03/27/2019 12:54:08</publishTime>
+      <publishTime>10/10/2019 12:38:20</publishTime>
     </File>
     <File Include="Indi/pages/login.html">
       <publishTime>04/04/2017 10:45:02</publishTime>
@@ -550,10 +553,73 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/04/2017 10:45:02</publishTime>
     </File>
     <File Include="js/ajax.js">
-      <publishTime>09/25/2018 17:22:14</publishTime>
+      <publishTime>09/06/2019 10:10:01</publishTime>
+    </File>
+    <File Include="js/html2canvas.js">
+      <publishTime>05/13/2019 16:54:42</publishTime>
     </File>
     <File Include="js/Indicadores.js">
       <publishTime>09/25/2018 17:50:25</publishTime>
+    </File>
+    <File Include="js/jquery-1.12.4.js">
+      <publishTime>10/10/2019 10:25:32</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/AUTHORS.txt">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/external/jquery/jquery.js">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/images/ui-icons_444444_256x240.png">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/images/ui-icons_555555_256x240.png">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/images/ui-icons_777620_256x240.png">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/images/ui-icons_777777_256x240.png">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/images/ui-icons_cc0000_256x240.png">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/images/ui-icons_ffffff_256x240.png">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/index.html">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.css">
+      <publishTime>10/10/2019 12:36:59</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.js">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.min.css">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.min.js">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.structure.css">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.structure.min.css">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.theme.css">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/jquery-ui.theme.min.css">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/LICENSE.txt">
+      <publishTime>10/10/2019 10:27:05</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.12.1/package.json">
+      <publishTime>10/10/2019 10:27:05</publishTime>
     </File>
     <File Include="js/plusTabs-master/plusTabs.jquery.json">
       <publishTime>12/19/2017 14:47:32</publishTime>
@@ -568,10 +634,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/19/2017 14:47:32</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>02/18/2019 15:52:45</publishTime>
+      <publishTime>09/25/2019 18:46:39</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>03/27/2019 13:04:21</publishTime>
+      <publishTime>10/14/2019 16:40:33</publishTime>
     </File>
     <File Include="Servicio.aspx">
       <publishTime>01/08/2018 12:18:02</publishTime>
@@ -1072,7 +1138,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/04/2017 10:45:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/27/2019 12:46:15</publishTime>
+      <publishTime>09/25/2019 18:19:21</publishTime>
     </File>
   </ItemGroup>
 </Project>

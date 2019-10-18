@@ -61,7 +61,7 @@
             <asp:Label runat="server" ID="passError" CssClass="text-danger"></asp:Label>
         </div>
         <div class="form-group">
-            <asp:Button runat="server" Text="Entrar" CssClass="btn" OnClick="Login" />
+            <asp:Button runat="server" Text="Entrar" CssClass="btn" OnClick="Login"/>
         </div>
         <div class="form-group">
             <asp:Label runat="server" ID="formError" CssClass="text-danger"></asp:Label>

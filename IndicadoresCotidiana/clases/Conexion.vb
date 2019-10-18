@@ -15,7 +15,10 @@ Public Class Conexion
                 connectionString = ConfigurationManager.AppSettings("Produccion")
 
             ElseIf intTipoConsulta = 2 Then
-                connectionString = ConfigurationManager.AppSettings("ProduccionDie")
+                connectionString = ConfigurationManager.AppSettings("ProduccionDIE")
+
+            ElseIf intTipoConsulta = 3 Then
+                connectionString = ConfigurationManager.AppSettings("Naxit")
                 'ElseIf intTipoConsulta = 3 Then
                 '    connectionString = ConfigurationManager.AppSettings("ConnectionSEJ")
                 'ElseIf intTipoConsulta = 4 Then

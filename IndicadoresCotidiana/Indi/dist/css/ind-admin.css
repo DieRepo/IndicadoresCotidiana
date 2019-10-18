@@ -1,5 +1,5 @@
 ﻿
-#Indicadores-materia, #Indicadores-materia li, .sub-m-ind, #gen-reporte {
+#Indicadores-materia, #Indicadores-materia li, .sub-m-ind, #gen-reporte, #Indicadores-gestion, #Indicadores-gestion li {
     cursor: pointer;
 }
 
@@ -9,6 +9,23 @@
 
 
 /*CSS*/
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#footer {
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    bottom: 0px;
+    background-color: #dddddd;
+    text-align: right;
+    padding: 5px;
+    font-weight: bolder;
+}
 
 @media (min-width: 768px) {
     #page-wrapper {
@@ -67,8 +84,9 @@ nav a {
 
 #page-wrapper {
     padding: 0 30px;
-    min-height: 568px;
+    max-height: calc(100% - 150px);
     background-color: #dddddd;
+    overflow-y:auto;
 }
 
 .page-header-pj {
@@ -83,11 +101,11 @@ nav a {
 }
 
 #titulo-indicador {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #distrito, #titulo-unico {
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -172,6 +190,10 @@ nav a {
     padding: 5px;
 }
 
+#formula-tabla td{
+    width: auto !important;
+}
+
 #maskRef {
     position: fixed;
     top: 0px;
@@ -183,4 +205,12 @@ nav a {
     justify-content: center;
     align-items: center;
     display: none;
+}
+
+.menu-opciones > .navbar-collapse {
+    margin-bottom: 35px !important;
+}
+
+.ui-dialog-title{
+    width: 97.8% !important;
 }
