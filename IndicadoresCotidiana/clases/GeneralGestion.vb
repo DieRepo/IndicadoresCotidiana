@@ -2,8 +2,18 @@
 
 Public Class GeneralGestion
 
+    Private _idOrden As String
     Private _IdGestion As String
     Private _Datos As New List(Of DatosGestion)
+
+    Public Property IdOrden As String
+        Get
+            Return _idOrden
+        End Get
+        Set(value As String)
+            _idOrden = value
+        End Set
+    End Property
 
     Public Property IdGestion As String
         Get

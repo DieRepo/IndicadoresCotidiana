@@ -15,6 +15,10 @@ $(function () {
         var anio = fecha.getFullYear();
         var month = fecha.getMonth();
 
+        if(fecha.getDate() < 11){
+            month -=  1;
+        }
+
         var primerDia = new Date(anio, month, 1);
         var ultimoDia = new Date(anio, month-1, 0);
 
@@ -50,9 +54,9 @@ $(function () {
 function ObtenJuzgados(Response) {
     //console.log(Response);
 
-
+    $('#Juzgados').append('<option value="0" selected="selected">Todos los Distritos</option>');
     for (var x = 0; x < Response.d.length; x++) {
-        $('#Juzgados').append('<option value="' + Response.d[x].idDistrito + '" selected="selected">' + Response.d[x].Descripcion + '</option>');
+        $('#Juzgados').append('<option value="' + Response.d[x].idDistrito + '">' + Response.d[x].Descripcion + '</option>');
     }
 
     $('#Juzgados').val(Response.d[15].idDistrito);
@@ -183,208 +187,8 @@ function ValidaIndicadores(Response) {
     } catch (ex) { console.log(ex)};
     };
 
-function validaInformacion(indicador,Descrpcion) {
-    try {
-        //alert(indicador);
-        $("#Complemento").empty();
-        IndicadorActual = indicador;
-        $("#TitleIndicador").text(Descrpcion +" "+ $("#Juzgados option:selected").text());
 
-        var idJuzgado = $("#Juzgados").val();
-        var anio = $("#Anios").val();
-        var mes = $("#Meses").val();
 
-        //console.log(idJuzgado);
-        //console.log(anio);
-        //console.log(mes);
-
-        $("#morris-bar-chart").empty();
-        $("#morris-donut-chart").empty();
-
-        if (indicador == 1) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total de encuetas en el mes");
-          
-            $("#Desc2").text("0");
-            $("#Tex2").text("Numero de quejas en el mes");
-
-            $("#Desc3").text("5% o menos");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 2) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Horas de solicitud");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Horas del despacho de la solicitud");
-
-            $("#Desc3").text("10 min o menos");
-            $("#Tex3").text("Meta");
-        }else if (indicador == 3) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total de causas en el mes ");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de causas sin salida");
-
-            $("#Desc3").text("30% o menos");
-            $("#Tex3").text("Meta");
-        }else if (indicador == 4) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total de causas en el mes ");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de causas con salida");
-
-            $("#Desc3").text("100% o mas");
-            $("#Tex3").text("Meta");
-        }else if (indicador == 5) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total de Meses ");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de causas en tramite");
-
-            $("#Desc3").text("6 meses o menos");
-            $("#Tex3").text("Meta");
-        }else if (indicador == 6) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total de Meses");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de horas al mes");
-
-            $("#Desc3").text("Tiempo marcado por CNPP");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 7) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total dentro del termino ");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de audiencias programadas");
-
-            $("#Desc3").text("100%");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 8) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total de dentro del termino ");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de audiencias programadas");
-
-            $("#Desc3").text("100%");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 9 || indicador == 10) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Total de dentro del termino ");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de audiencias programadas");
-
-            $("#Desc3").text("100%");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 11) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Audiencias desistidas por juzgado");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de causas turnadas por juzgado");
-
-            $("#Desc3").text("5% o menos");
-            $("#Tex3").text("Meta");
-        }else if (indicador == 12) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Audiencias diferidas por juzgado");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de audiencias programadas por juzgado");
-
-            $("#Desc3").text("10% o menos");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 13) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Audiencias diferidas por juzgado");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de audiencias programadas por juzgado");
-
-            $("#Desc3").text("10% o menos");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 14 || indicador == 15) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Audiencias diferidas por juzgado");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de audiencias programadas por juzgado");
-
-            $("#Desc3").text("10% o menos");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 16) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Audiencias programadas en el mes");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Costo operativo por juzgado");
-
-            $("#Desc3").text("");
-            $("#Tex3").text("Meta");
-        }else if (indicador == 17) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Audiencias iniciadas igual o antes de la hora programada");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de Audiencias programadas");
-
-            $("#Desc3").text("80% o mas");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 18) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Suma (inicio real - inicio programado)");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Suma (fin real - fin programado)");
-
-            $("#Desc3").text("60 min o menos");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 19) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Horas de duracion de las audiencias por juzgado");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("horas laborales del periodo");
-
-            $("#Desc3").text("mas del 40%,menos del 70%");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 20) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("Horas de duracion de las audiencias por sala");
-
-           $("#Desc2").text("0");
-            $("#Tex2").text("horas laborales del periodo");
-
-            $("#Desc3").text("mas del 50%,menos del 70%");
-            $("#Tex3").text("Meta");
-        } else if (indicador == 21) {
-            $("#Desc1").text("0");
-            $("#Tex1").text("total de audiencias celebradas");
-
-            $("#Desc2").text("0");
-            $("#Tex2").text("Total de audiencias respaldadas");
-
-            $("#Desc3").text("100%");
-            $("#Tex3").text("Meta");
-        }
-
-        var primerDia = new Date(anio, mes , 1);
-        var ultimoDia = new Date(anio, mes, 0);
-
-       
-
-        var actionData = "{'idJuzgado': '" + idJuzgado + "','idIndicador': '" + IndicadorActual + "','fechaInicio': '" + ObtenFechaInicio(anio, mes) + "','fechaFin': '" + anio + "-" + mes + "-" + ultimoDia.getDate()+" 23:59:59'}";
-
-        var datosServicio = new servicioAjax("POST", "../../Servicio.aspx/ObtenCalculoIndicadores", actionData, GeneraDatosIndicador);
-
-    } catch (ex) { console.log(ex); }
-    }
 
 function ObtenFechaInicio(anio,mes) {
     try {

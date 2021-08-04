@@ -292,6 +292,7 @@ var jsonGestion = {
         valor2: "Total de ingresos",
         porcien: "x 100",
         fuente: "Operam y Sistema Expediente Electrónico",
+        orden: '1',
         activo: true
 
     },
@@ -317,6 +318,7 @@ var jsonGestion = {
         valor2: "Total de acuerdos en el registro",
         porcien: "",
         fuente: "Sistema Expediente Electrónico",
+        orden: '2',
         activo: true
     },
 
@@ -342,10 +344,37 @@ var jsonGestion = {
         valor2: "Total de notificaciones",
         porcien: "",
         fuente: "Sistema Electrónico",
+        orden: '3',
         activo: true
     },
 
-    4: {
+    '10': {
+        id: "10",
+        titulo: "Tiempo para la práctica de notificaciones electronicas",
+        descripcion: "Promedio de horas requeridas para notificar electronicamente un acuerdo. ",
+        descdona: "TIEMPO",
+        desc1: "Tiempo en horas para notificar un acuerdo",
+        desc2: "Total de notificaciones electronicas",
+        desc3: "Promedio de horas requeridas para notificar un acuerdo",
+        sim: " horas",
+        padre: "",
+        submenu: "n",
+        proceso: "Trámite Judicial",
+        unidad: "horas",
+        meta: "24 horas laborales o menos",
+        periodicidad: "Mensual",
+        bueno: "0h – 20h",
+        regular: "20.1h – 23.9h",
+        malo: "24hr o más",
+        valor1: "∑(Fecha de emisión del acuerdo - Fecha de la notificación)",
+        valor2: "Total de notificaciones electronicas",
+        porcien: "",
+        fuente: "Sistema Electrónico",
+        orden: '4',
+        activo: true
+    },
+
+    '4': {
         id: "4",
         titulo: "Porcentaje de audiencias celebradas",
         descripcion: "Promedio de audiencias efectivamente celebradas en relación con las audiencias señaladas buscando contrarestar el diferimiento innecesario. ",
@@ -367,6 +396,7 @@ var jsonGestion = {
         valor2: "Total de audiencias programadas",
         porcien: "x 100",
         fuente: "Sistema Expediente Electrónico",
+        orden: '5',
         activo: true
     },
 
@@ -392,6 +422,7 @@ var jsonGestion = {
         valor2: "Total de audiencias programadas",
         porcien: "x 100",
         fuente: "Sistema Expediente Electrónico",
+        orden: '6',
         activo: false
     },
 
@@ -417,6 +448,7 @@ var jsonGestion = {
         valor2: "",
         porcien: "",
         fuente: "",
+        orden: '7',
         activo: false
     },
 
@@ -442,6 +474,7 @@ var jsonGestion = {
         valor2: "",
         porcien: "",
         fuente: "",
+        orden: '8',
         activo: false
     },
 
@@ -467,6 +500,7 @@ var jsonGestion = {
         valor2: "",
         porcien: "",
         fuente: "",
+        orden: '9',
         activo: false
     },
 
@@ -492,6 +526,7 @@ var jsonGestion = {
         valor2: "",
         porcien: "",
         fuente: "",
+        orden: '10',
         activo: false
     },
    

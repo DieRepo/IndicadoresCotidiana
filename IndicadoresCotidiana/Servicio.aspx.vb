@@ -18,7 +18,7 @@ Public Class Servicio
         Try
 
             Dim Conexion As New Conexion()
-            Dim Coneccion = Conexion.conexion_global(1)
+            Dim Coneccion = Conexion.conexion_global(2)
 
             Dim sql As String = " select * from estadistica.tbldistritos;"
             Dim cmd As New MySqlCommand(sql, Coneccion)
@@ -143,8 +143,8 @@ Public Class Servicio
         Dim Conexion As New Conexion()
         Dim Coneccion = Conexion.conexion_global(2)
 
-        Dim query As String = "SELECT cveJuzgadoSEJ, NomJuzgado FROM `indicadores_pjem_cotidiana`.tbljuzgados 
-                            WHERE cveDistrito = " + cveDistrito + " AND cveMateria LIKE '" + materia + "';"
+        Dim query As String = "SELECT cveGestion, nombre FROM equivalenciascatalogos.util_tbljuzgados
+                WHERE cveDistrito = " + cveDistrito + " AND cveMateria LIKE '" + materia + "' AND ACTIVO = 1;"
         Dim cmd As New MySqlCommand(query, Coneccion)
         cmd.CommandTimeout = 600
 
@@ -152,8 +152,8 @@ Public Class Servicio
 
         While r.Read()
             juzgados.Add(New Juzgado() With {
-                .CveJuzgado = r.GetString("cveJuzgadoSEJ"),
-                .NomJuzgado = r.GetString("NomJuzgado")
+                .CveJuzgado = r.GetString("cveGestion"),
+                .NomJuzgado = r.GetString("nombre")
                          })
         End While
 
@@ -809,7 +809,7 @@ Public Class Servicio
             End Select
 
             If cveJuzgado > 0 Then
-                Consulta = Consulta.Replace("@cveJuzgado", "'" + (cj.juzgado.Item(cveJuzgado)).ToString + "'")
+                Consulta = Consulta.Replace("@cveJuzgado", "'" + cveJuzgado.ToString + "'")
             Else
                 Consulta = Consulta.Replace("@cveJuzgado", "'%%'")
             End If
@@ -861,7 +861,7 @@ Public Class Servicio
 
             Dim Consulta As String = "SELECT ai.anio anio, ai.mes mes, sum(ai.valor1) valor1, sum(ai.valor2) valor2, round(avg(ai.calculo),2) calculo
                                     FROM indicadores_pjem_cotidiana.tblantecedesindicadores ai
-                                    INNER JOIN indicadores_pjem_cotidiana.tbljuzgados j on j.cveJuzgadoGES = ai.cveJuzgado
+                                    INNER JOIN equivalenciascatalogos.util_tbljuzgados j on j.cveGestion = ai.cveJuzgado
                                     WHERE
                                     ai.fechaCorte between @fechaIni AND @fechaFin
                                     AND ai.cveTipoIndicador = 2                                    
@@ -881,11 +881,11 @@ Public Class Servicio
 
                 Dim val As String = ""
 
-                If (cj.juzgado.Item(cveJuzgado) <> Nothing) Then
+                If (cveJuzgado <> Nothing) Then
 
-                    val = cj.juzgado.Item(cveJuzgado).ToString()
+                    val = cveJuzgado.ToString()
                 Else
-                    val = "0"
+                    val = ""
                 End If
 
                 'IIf(cj.juzgado.Item(cveJuzgado) <> Nothing, cj.juzgado.Item(cveJuzgado).ToString()
@@ -964,7 +964,7 @@ Public Class Servicio
                 Dim FechaFin = (Fecha.AddMonths(1).AddSeconds(-1)).ToString("yyyy-MM-dd")
 
                 If cveJuzgado > 0 Then
-                    Consulta = Consulta.Replace("@cveJuzgado", "'" + (cj.juzgado.Item(cveJuzgado)).ToString + "'")
+                    Consulta = Consulta.Replace("@cveJuzgado", "'" + cveJuzgado.ToString + "'")
                 Else
                     Consulta = Consulta.Replace("@cveJuzgado", "'%%'")
                 End If
@@ -1036,14 +1036,16 @@ Public Class Servicio
             Dim FechaIni = (New Date(anio, 1, 1, 0, 0, 0)).ToString("yyyy-MM-dd")
             Dim FechaFin = (Fecha.AddMonths(1).AddSeconds(-1)).ToString("yyyy-MM-dd")
 
+            Dim ind = New Integer() {1, 2, 3, 10, 4}
 
-            For i As Integer = 1 To 4
+
+            For i As Integer = 0 To 4
 
                 Dim l As New List(Of DatosGestion)()
 
                 Dim Consulta As String = "SELECT ai.anio anio, ai.mes mes, sum(ai.valor1) valor1, sum(ai.valor2) valor2, round(AVG(ai.calculo),2) calculo
                                     FROM indicadores_pjem_cotidiana.tblantecedesindicadores ai
-                                    INNER JOIN indicadores_pjem_cotidiana.tbljuzgados j on j.cveJuzgadoGES = ai.cveJuzgado
+                                    INNER JOIN equivalenciascatalogos.util_tbljuzgados j on j.cveGestion = ai.cveJuzgado
                                     WHERE
                                     ai.fechaCorte between @fechaIni AND @fechaFin
                                     AND ai.cveTipoIndicador = 2                                    
@@ -1056,9 +1058,15 @@ Public Class Servicio
 
 
                 If cveJuzgado > 0 Then
-                    Consulta = Consulta.Replace("@cveJuzgado", "'" + (cj.juzgado.Item(cveJuzgado)).ToString + "'")
+                    Consulta = Consulta.Replace("@cveJuzgado", "'" + cveJuzgado.ToString + "'")
                 Else
                     Consulta = Consulta.Replace("@cveJuzgado", "'%%'")
+                End If
+
+                If cveDistrito > 0 Then
+                    Consulta = Consulta.Replace("@cveDistrito", "'" + cveDistrito + "'")
+                Else
+                    Consulta = Consulta.Replace("@cveDistrito", "'%%'")
                 End If
 
                 Dim Conexion As New Conexion()
@@ -1071,8 +1079,8 @@ Public Class Servicio
                     cmd.CommandTimeout = 6000
                     cmd.Parameters.AddWithValue("@fechaIni", FechaIni)
                     cmd.Parameters.AddWithValue("@fechaFin", FechaFin)
-                    cmd.Parameters.AddWithValue("@cveIndicador", i)
-                    cmd.Parameters.AddWithValue("@cveDistrito", cveDistrito)
+                    cmd.Parameters.AddWithValue("@cveIndicador", ind(i))
+                    'cmd.Parameters.AddWithValue("@cveDistrito", cveDistrito)
                     cmd.Parameters.AddWithValue("@cveMateria", materia)
 
 
@@ -1086,8 +1094,8 @@ Public Class Servicio
                              .Fecha = r.GetString("anio") + "-" + r.GetString("mes").PadLeft(2, "0"),
                              .Valor = r.GetString("valor1"),
                              .Total = r.GetString("valor2"),
-                             .Calculo = DameCalculoGestion(i, r.GetInt64("valor1"), r.GetInt64("valor2")),
-                             .Semaforo = DameSemaforo(i, r.GetInt64("valor1"), r.GetInt64("valor2"))
+                             .Calculo = DameCalculoGestion(ind(i), r.GetInt64("valor1"), r.GetInt64("valor2")),
+                             .Semaforo = DameSemaforo(ind(i), r.GetInt64("valor1"), r.GetInt64("valor2"))
                         })
 
                     End While
@@ -1096,11 +1104,12 @@ Public Class Servicio
 
                     l = ValidadorGestion(l, anio, mes)
 
-                    If materia = 1 And i = 4 Then
+                    If materia = 1 And ind(i) = 4 Then
 
                     Else
                         lt.Add(New GeneralGestion() With {
-                        .IdGestion = i,
+                        .IdOrden = i + 1,
+                        .IdGestion = ind(i),
                         .Datos = l
                         })
                     End If
@@ -1130,7 +1139,7 @@ Public Class Servicio
         Dim Calc As String = ""
 
         Select Case id
-            Case "2", "3"
+            Case "2", "3", "10"
                 Calc = Math.Round((valor / total), 2)
             Case "1", "4"
                 Calc = Format((valor / total), "Percent")
@@ -1166,6 +1175,14 @@ Public Class Servicio
                 End If
 
             Case "3"
+                If (valor / total) >= 0 And (valor / total) <= 20 Then
+                    Sem = Verde
+                ElseIf (valor / total) > 20 And (valor / total) < 24 Then
+                    Sem = Amarillo
+                ElseIf (valor / total) >= 24 Then
+                    Sem = Rojo
+                End If
+            Case "10"
                 If (valor / total) >= 0 And (valor / total) <= 20 Then
                     Sem = Verde
                 ElseIf (valor / total) > 20 And (valor / total) < 24 Then

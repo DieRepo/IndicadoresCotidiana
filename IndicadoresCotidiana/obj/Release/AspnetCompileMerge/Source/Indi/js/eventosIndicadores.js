@@ -643,7 +643,15 @@ function cambioMesAnio(callback) {
     $("#Meses").empty();
 
     for (var x = 1; x <= month; x++) {
-        $('#Meses').append('<option value="' + x + '">' + Meses[x - 1] + '</option>');
+        if (anio === 2019) {
+            if (x >= 8) {
+                $('#Meses').append('<option value="' + x + '">' + Meses[x-1] + '</option>');
+            }
+        } else {
+            $('#Meses').append('<option value="' + x + '">' + Meses[x-1] + '</option>');
+        }
+
+        //$('#Meses').append('<option value="' + x + '">' + Meses[x - 1] + '</option>');
     }
 
     if (anioActual == anio && mesActual < mes) {

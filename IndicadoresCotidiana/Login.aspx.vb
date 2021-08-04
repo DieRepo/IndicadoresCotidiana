@@ -13,16 +13,16 @@ Public Class Login
 
         If IsPostBack = False Then
 
-
             If Page.Request.ServerVariables("HTTP_REFERER") <> Nothing Then
                 VerificaLoginGestion()
             Else
-                'Response.Redirect("http://gestionjudicial.pjedomex.gob.mx/ideas/")
+                Response.Redirect("http://gestionjudicial.pjedomex.gob.mx/ideas/")
             End If
+
 
         End If
 
-        If Session("Sesion") IsNot Nothing Then
+            If Session("Sesion") IsNot Nothing Then
             sesion = CType(Session("Sesion"), Dictionary(Of String, String))
             Response.Redirect("Indi/pages/index.html")
 
@@ -157,7 +157,7 @@ Public Class Login
                             Try
                                 Dim Conexion As Conexion = New Conexion()
                                 Dim Coneccion = Conexion.conexion_global(3)
-                                Dim sqlquery As String = "SELECT if(count(email) = 1, true, false) existe FROM " + base + ".`users`
+                                Dim sqlquery As String = "SELECT if(count(email) > 0, true, false) existe FROM " + base + ".`users`
                                       WHERE email = @usr  and activated = 1;"
 
                                 Dim cmd As MySqlCommand = New MySqlCommand(sqlquery, Coneccion)

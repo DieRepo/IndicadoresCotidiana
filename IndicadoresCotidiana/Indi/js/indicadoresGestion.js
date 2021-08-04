@@ -11,20 +11,29 @@ function creaJsonMenuIndicadoresG(origen) {
 
     var i = 1;
     var menu = "";
+    var sizeJson = jsonGestion.length;
+    var menuArray = [];
 
     $.each(jsonGestion, function (val, item) { 
 
         if (($("#Materia").val() == 1 && item.id == 4) != true) {
             if (item.activo) {
-                menu += '<li class="gestion click"> <a data-activo="true" data-id= "' + item.id + '">' + i + '.- ' + item.titulo + '</a></li>\n';
+                menuArray[item.orden] = '<li class="gestion click"> <a data-activo="true" data-id= "' + item.id + '">' + item.orden + '.- ' + item.titulo + '</a></li>\n';
             } else {
-                menu += '<li class="gestion click"> <a data-activo="false" data-id= "' + 0 + '" data-toggle="tooltip" data-placement="right" title="Indicador proximamente">' + i + '.- ' + item.titulo + ' *</a></li>\n';
+                menuArray[item.orden] = '<li class="gestion click"> <a data-activo="false" data-id= "' + 0 + '" data-toggle="tooltip" data-placement="right" title="Indicador proximamente">' + item.orden + '.- ' + item.titulo + ' *</a></li>\n';
             }
         }
         i++;
     });
 
+   // console.log(menuArray);
 
+    for (var j = 1; j < menuArray.length; j++) {
+        if (menuArray[j] != null && menuArray[j] != "undefined") {
+            menu += menuArray[j];
+        }
+        
+    }
 
     $(origen).append(menu);
 
@@ -60,7 +69,7 @@ function consultarReporte(id) {
         $.each(data, function (index, item) {
 
             if (item.Anio.toString() === "2019") {
-                if (item.Mes >= "9") {
+                if (item.Mes >= 9) {
                     json.push(item);
                 }
             } else {
@@ -141,7 +150,7 @@ function consultaTabla() {
 
     $("#div-flotante-tabla *").remove();
     $("#div-flotante-tabla").html("<table id=\"tabla-indicadores\" class=\"display nowrap table table-striped table-bordered\" cellspacing=\"0\" style=\"width: 80 %\"></table>");
-    var cabeceraTabla = "<th>Id</th> <th>Proceso</th> <th>Indicador</th> <th>Unidad</th> <th>Mata</th> <th>Periodicidad</th> <th>Bueno</th> <th>Regular</th> <th>Malo</th>";
+    var cabeceraTabla = "<th>Id</th> <th>Proceso</th> <th>Indicador</th> <th>Unidad</th> <th>Meta</th> <th>Periodicidad</th> <th>Bueno</th> <th>Regular</th> <th>Malo</th>";
 
     var datosTabla = [];
     var json = {};
@@ -157,13 +166,13 @@ function consultaTabla() {
 
             json[index].Datos.length = 0;
 
-            var dato = [item.IdGestion, jsonGestion[item.IdGestion].proceso, jsonGestion[item.IdGestion].titulo, jsonGestion[item.IdGestion].unidad, jsonGestion[item.IdGestion].meta, jsonGestion[item.IdGestion].periodicidad
+            var dato = [item.IdOrden, jsonGestion[item.IdGestion].proceso, jsonGestion[item.IdGestion].titulo, jsonGestion[item.IdGestion].unidad, jsonGestion[item.IdGestion].meta, jsonGestion[item.IdGestion].periodicidad
                 , jsonGestion[item.IdGestion].bueno, jsonGestion[item.IdGestion].regular, jsonGestion[item.IdGestion].malo];
 
             $.each(item.Datos, function (i, it) {
 
                 if (it.Anio.toString() === "2019") {
-                    if (it.Mes >= "9") {
+                    if (it.Mes >= 9) {
                         json[index].Datos.push(it);
                     }
                 } else {
@@ -280,7 +289,8 @@ function consultaTabla() {
             },
             "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 
-                var row = aData[0]-1;
+                //var row = aData[0] - 1;
+                var row = nRow._DT_RowIndex;
 
                 $(nRow).find('td:eq(6)').css('color', "#65baaf");
                 $(nRow).find('td:eq(7)').css('color', "#ffb259");
@@ -369,7 +379,7 @@ function consultarTodo() {
             $.each(item.Datos, function (i, it) {
 
                 if (it.Anio.toString() === "2019") {
-                    if (it.Mes >= "9") {
+                    if (it.Mes >= 9) {
                         json[index].Datos.push(it);
                     }
                 } else {
@@ -410,7 +420,7 @@ function consultarTodo() {
                 + ' <td><label>' + jsonGestion[item.IdGestion].desc2 + ': ' + item.Datos[0].Total + '</label></td>'
                 + ' </tr>'
                 + ' <tr ALIGN=LEFT>'
-                + ' <td><label>' + jsonGestion[item.IdGestion].desc2 + ': ' + item.Datos[0].Calculo + '</label></td>'
+                + ' <td><label>' + jsonGestion[item.IdGestion].desc3 + ': ' + item.Datos[0].Calculo + '</label></td>'
                 + ' </tr>'
                 + ' </table>'
                 + ' </div>'
