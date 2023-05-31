@@ -16,7 +16,7 @@ Public Class Login
             If Page.Request.ServerVariables("HTTP_REFERER") <> Nothing Then
                 VerificaLoginGestion()
             Else
-                Response.Redirect("http://gestionjudicial.pjedomex.gob.mx/ideas/")
+                'Response.Redirect("http://gestionjudicial.pjedomex.gob.mx/ideas/")
             End If
 
 

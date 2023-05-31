@@ -4,6 +4,10 @@ Imports MySql.Data.MySqlClient
 Imports System.Data.SqlClient
 Imports IronPdf
 Imports System.Web.Script.Serialization
+Imports OfficeOpenXml
+Imports System.Drawing
+Imports OfficeOpenXml.Style
+Imports System.IO
 
 Public Class Servicio
     Inherits System.Web.UI.Page
@@ -143,8 +147,19 @@ Public Class Servicio
         Dim Conexion As New Conexion()
         Dim Coneccion = Conexion.conexion_global(2)
 
-        Dim query As String = "SELECT cveGestion, nombre FROM equivalenciascatalogos.util_tbljuzgados
-                WHERE cveDistrito = " + cveDistrito + " AND cveMateria LIKE '" + materia + "' AND ACTIVO = 1;"
+        If CInt(materia) = 1 Then
+            materia = "CIVIL"
+        ElseIf CInt(materia) = 2 Then
+            materia = "FAMILIAR"
+        ElseIf CInt(materia) = 3 Then
+            materia = "MERCANTIL"
+        ElseIf CInt(materia) = 5 Then
+            materia = "MIXTO"
+        End If
+
+
+        Dim query As String = "SELECT cveGestion, nombre FROM die_equivalencias_catalogos.homologado_tbljuzgados
+                WHERE cveDistrito = " + cveDistrito + " AND materia LIKE '" + materia + "' AND ACTIVO = 1;"
         Dim cmd As New MySqlCommand(query, Coneccion)
         cmd.CommandTimeout = 600
 
@@ -1477,5 +1492,330 @@ Public Class Servicio
 
         Return nl
     End Function
+
+    <WebMethod>
+    Public Shared Function MetodoDescarga(anio As Integer, mes As Integer, cveDistrito As String, cveJuzgado As String)
+
+        Dim ser = New Servicio
+
+        ser.DescargaExcel(anio, mes, cveDistrito, cveJuzgado)
+
+        Return True
+    End Function
+
+    <WebMethod>
+    Public Shared Function DescargaExcel(anio As Integer, mes As Integer, cveDistrito As String, cveJuzgado As String) As List(Of Notificaciones)
+        Dim l As New List(Of Notificaciones)()
+        Dim Conexion As New Conexion()
+        Try
+            Dim c = Conexion.conexion_global(2)
+
+            Dim Consulta As String = "select anio,mes,fechaResgistro,fechaActualizacion,lpad(expediente,10,0) expediente,diferenciaHoras,juzgado from indicadores_pjem_cotidiana.detalle_notificaciones " +
+                " where anio = @anioc and mes = @mes and cveAdscripcion like @cvejuzgadoc order by diferenciaHoras desc "
+
+            Dim cmd As New MySqlCommand(Consulta, c)
+            cmd.CommandTimeout = 6000
+            cmd.Parameters.AddWithValue("@anioc", anio)
+            cmd.Parameters.AddWithValue("@mes", mes)
+            cmd.Parameters.AddWithValue("@cvejuzgadoc", cveJuzgado)
+
+            Dim r As MySqlDataReader = cmd.ExecuteReader
+
+            While r.Read
+                'rg += 1
+                'x.Cells("B" + rg.ToString + "").Value = r.GetString("anio")
+                'x.Cells("C" + rg.ToString + "").Value = r.GetString("mes")
+                'x.Cells("D" + rg.ToString + "").Value = r.GetDateTime("fechaResgistro")
+                'x.Cells("E" + rg.ToString + "").Value = r.GetDateTime("fechaActualizacion")
+                'x.Cells("F" + rg.ToString + "").Value = r.GetString("expediente")
+                'x.Cells("G" + rg.ToString + "").Value = r.GetString("diferenciaHoras")
+                'x.Cells("H" + rg.ToString + "").Value = r.GetString("juzgado")
+                l.Add(New Notificaciones() With {
+                    .Anio = r.GetString("anio"),
+                    .Mes = r.GetString("mes"),
+                    .FechaResgistro = r.GetString("fechaResgistro").ToString,
+                    .FechaActualizacion = r.GetString("fechaActualizacion").ToString,
+                    .Expediente = r.GetString("expediente").ToString,
+                    .DifHoras = r.GetString("diferenciaHoras"),
+                    .Juzgado = r.GetString("juzgado")
+                      })
+
+            End While
+
+            Conexion.cerrar()
+
+            ''Dim resp As HttpResponse
+            'Dim x = New ExcelPackage()
+            'x = GeneraExcel(anio, mes, cveDistrito, cveJuzgado)
+            'Dim memoryStream = New MemoryStream()
+            'My.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            'My.Response.AddHeader("content-disposition", "attachment;  filename=Detalles_Indicadores " + ".xlsx")
+            ''Response.ContentType = "application/vnd.ms-excel"
+            'x.SaveAs(memoryStream)
+            'memoryStream.WriteTo(My.Response.OutputStream)
+            'My.Response.TransmitFile("../Detalles_Indicadores.xlsx")
+            'My.Response.Flush()
+            ''My.Response.Redirect("Servicio.aspx", False)
+            'My.Response.Close()
+
+
+
+
+        Catch ex As Exception
+            Conexion.cerrar()
+            Console.WriteLine("Error en la consulta...")
+
+        End Try
+        Return l
+    End Function
+
+    <WebMethod>
+    Public Shared Function DescargaExcelPromociones(anio As Integer, mes As Integer, cveDistrito As String, cveJuzgado As String) As List(Of Notificaciones)
+        Dim l As New List(Of Notificaciones)()
+        Dim Conexion As New Conexion()
+        Try
+            Dim c = Conexion.conexion_global(2)
+
+            Dim Consulta As String = "select anio,mes,fechaPromocion,fechaAcuerdo,lpad(expediente,10,0) expediente,diferenciaHoras,juzgado from indicadores_pjem_cotidiana.detalle_promociones " +
+                " where anio = @anioc and mes = @mes and cveAdscripcion like @cvejuzgadoc order by diferenciaHoras desc "
+
+            Dim cmd As New MySqlCommand(Consulta, c)
+            cmd.CommandTimeout = 6000
+            cmd.Parameters.AddWithValue("@anioc", anio)
+            cmd.Parameters.AddWithValue("@mes", mes)
+            cmd.Parameters.AddWithValue("@cvejuzgadoc", cveJuzgado)
+
+            Dim r As MySqlDataReader = cmd.ExecuteReader
+
+            While r.Read
+                l.Add(New Notificaciones() With {
+                    .Anio = r.GetString("anio"),
+                    .Mes = r.GetString("mes"),
+                    .FechaResgistro = r.GetString("fechaPromocion").ToString,
+                    .FechaActualizacion = r.GetString("fechaAcuerdo").ToString,
+                    .Expediente = r.GetString("expediente").ToString,
+                    .DifHoras = r.GetString("diferenciaHoras"),
+                    .Juzgado = r.GetString("juzgado")
+                      })
+
+            End While
+
+            Conexion.cerrar()
+
+        Catch ex As Exception
+            Conexion.cerrar()
+            Console.WriteLine("Error en la consulta...")
+
+        End Try
+        Return l
+    End Function
+
+    <WebMethod>
+    Public Shared Function DescargaExcelNotifiElec(anio As Integer, mes As Integer, cveDistrito As String, cveJuzgado As String) As List(Of Notificaciones)
+        Dim l As New List(Of Notificaciones)()
+        Dim Conexion As New Conexion()
+        Try
+            Dim c = Conexion.conexion_global(2)
+
+            Dim Consulta As String = "select anio,mes,fechaAcuerdo,fechaNotificacion,lpad(expediente,10,0) expediente,diferenciaHoras,juzgado from indicadores_pjem_cotidiana.detalle_notificacioneselectronicas " +
+                " where anio = @anioc and mes = @mes and cveAdscripcion like @cvejuzgadoc order by diferenciaHoras desc "
+
+            Dim cmd As New MySqlCommand(Consulta, c)
+            cmd.CommandTimeout = 6000
+            cmd.Parameters.AddWithValue("@anioc", anio)
+            cmd.Parameters.AddWithValue("@mes", mes)
+            cmd.Parameters.AddWithValue("@cvejuzgadoc", cveJuzgado)
+
+            Dim r As MySqlDataReader = cmd.ExecuteReader
+
+            While r.Read
+                l.Add(New Notificaciones() With {
+                    .Anio = r.GetString("anio"),
+                    .Mes = r.GetString("mes"),
+                    .FechaResgistro = r.GetString("fechaAcuerdo").ToString,
+                    .FechaActualizacion = r.GetString("fechaNotificacion").ToString,
+                    .Expediente = r.GetString("expediente").ToString,
+                    .DifHoras = r.GetString("diferenciaHoras"),
+                    .Juzgado = r.GetString("juzgado")
+                      })
+
+            End While
+
+            Conexion.cerrar()
+
+        Catch ex As Exception
+            Conexion.cerrar()
+            Console.WriteLine("Error en la consulta...")
+
+        End Try
+        Return l
+    End Function
+
+    <WebMethod>
+    Public Shared Function DescargaExcelAudienciasc(anio As Integer, mes As Integer, cveDistrito As String, cveJuzgado As String) As List(Of Audiencia)
+        Dim l As New List(Of Audiencia)()
+        Dim Conexion As New Conexion()
+        Try
+            Dim c = Conexion.conexion_global(2)
+
+            Dim Consulta As String = "select anio,mes,fechaInicio,fechaFinal,estatus,juzgado from indicadores_pjem_cotidiana.detalle_audiencias " +
+                " where anio = @anioc and mes = @mes and cveAdscripcion like @cvejuzgadoc "
+
+            Dim cmd As New MySqlCommand(Consulta, c)
+            cmd.CommandTimeout = 6000
+            cmd.Parameters.AddWithValue("@anioc", anio)
+            cmd.Parameters.AddWithValue("@mes", mes)
+            cmd.Parameters.AddWithValue("@cvejuzgadoc", cveJuzgado)
+
+            Dim r As MySqlDataReader = cmd.ExecuteReader
+
+            While r.Read
+                l.Add(New Audiencia() With {
+                    .Anio = r.GetString("anio"),
+                    .Mes = r.GetString("mes"),
+                    .FechaInicio = r.GetString("fechaInicio").ToString,
+                    .FechaFinal = r.GetString("fechaFinal").ToString,
+                    .Estatus = r.GetString("estatus").ToString,
+                    .Juzgado = r.GetString("juzgado")
+                      })
+
+            End While
+
+            Conexion.cerrar()
+
+        Catch ex As Exception
+            Conexion.cerrar()
+            Console.WriteLine("Error en la consulta...")
+
+        End Try
+        Return l
+    End Function
+
+    <WebMethod>
+    Public Shared Function GeneraExcel(anio As String, mes As String, distrito As String, juzgado As String) As ExcelPackage
+
+        Dim h = New Servicio
+        Dim d = New ExcelPackage()
+        Dim notifi As ExcelWorksheet
+
+
+        Try
+            notifi = d.Workbook.Worksheets.Add("Tiempo para la práctica de notificaciones")
+            'h.GeneraHojaUno(notifi, anio, mes, distrito, juzgado)
+
+
+        Catch ex As Exception
+
+        End Try
+        Return d
+
+    End Function
+
+    <WebMethod>
+    Public Shared Function GeneraHojaUno(anio As String, mes As String, distrito As String, juzgado As String) As List(Of Notificaciones)
+
+
+        Dim l As New List(Of Notificaciones)()
+        Dim Conexion As New Conexion()
+
+
+        'x.Cells("B1:F1").Merge = True
+        'x.Cells("B2:F2").Merge = True
+        'x.Cells("B5:F5").Merge = True
+
+        'x.Cells("B5").Value = "TIEMPO PARA LA PRACTICA DE NOTIFICACIONES"
+
+        'Dim rg As Integer = 6
+        'x.Cells("B6").Value = "FECHA REGISTRO"
+        'x.Cells("C6").Value = "FECHA ACTUALIZACION"
+        'x.Cells("D6").Value = "EXPEDIENTE"
+        'x.Cells("E6").Value = "DIFERENCIA HORAS"
+        'x.Cells("F6").Value = "JUZGADO"
+
+        'x.Cells("B5:F6").Style.Font.Bold = True
+        'x.Cells("B5:F6").Style.Font.Color.SetColor(Color.White)
+        'x.Cells("B5:F6").Style.Fill.PatternType = ExcelFillStyle.Solid
+        'x.Cells("B5:F6").Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#CC0000"))
+        'x.Cells("B5:F6").Style.HorizontalAlignment = ExcelHorizontalAlignment.Center
+
+        Try
+            Dim c = Conexion.conexion_global(2)
+
+            Dim Consulta As String = "select anio,mes,fechaResgistro,fechaActualizacion,expediente,diferenciaHoras,juzgado from indicadores_pjem_cotidiana.detalle_notificaciones " +
+                " where anio = @anioc and mes = @mes and cveAdscripcion like @cvejuzgadoc "
+
+            Dim cmd As New MySqlCommand(Consulta, c)
+            cmd.CommandTimeout = 6000
+            cmd.Parameters.AddWithValue("@anioc", anio)
+            cmd.Parameters.AddWithValue("@mes", mes)
+            cmd.Parameters.AddWithValue("@cvejuzgadoc", juzgado)
+
+            Dim r As MySqlDataReader = cmd.ExecuteReader
+
+            While r.Read
+                'rg += 1
+                'x.Cells("B" + rg.ToString + "").Value = r.GetString("anio")
+                'x.Cells("C" + rg.ToString + "").Value = r.GetString("mes")
+                'x.Cells("D" + rg.ToString + "").Value = r.GetDateTime("fechaResgistro")
+                'x.Cells("E" + rg.ToString + "").Value = r.GetDateTime("fechaActualizacion")
+                'x.Cells("F" + rg.ToString + "").Value = r.GetString("expediente")
+                'x.Cells("G" + rg.ToString + "").Value = r.GetString("diferenciaHoras")
+                'x.Cells("H" + rg.ToString + "").Value = r.GetString("juzgado")
+                l.Add(New Notificaciones() With {
+                    .Anio = r.GetString("anio"),
+                    .Mes = r.GetString("mes"),
+                    .FechaResgistro = r.GetString("fechaResgistro"),
+                    .FechaActualizacion = r.GetString("fechaActualizacion"),
+                    .Expediente = r.GetString("expediente"),
+                    .DifHoras = r.GetString("diferenciaHoras"),
+                    .Juzgado = r.GetString("juzgado")
+                      })
+
+            End While
+
+            Conexion.cerrar()
+
+        Catch ex As Exception
+            Conexion.cerrar()
+            Console.WriteLine("Error en la consulta...")
+
+        End Try
+        'x.Cells("B5:F" + rg.ToString + "").Style.Border.Top.Style = ExcelBorderStyle.Thin
+        'x.Cells("B5:F" + rg.ToString + "").Style.Border.Right.Style = ExcelBorderStyle.Thin
+        'x.Cells("B5:F" + rg.ToString + "").Style.Border.Bottom.Style = ExcelBorderStyle.Thin
+        'x.Cells("B5:F" + rg.ToString + "").Style.Border.Left.Style = ExcelBorderStyle.Thin
+        'x.Cells("B5:F" + rg.ToString + "").AutoFitColumns()
+        Return l
+    End Function
+
+    Function ExportExcel(anio As Integer, mes As Integer, cveDistrito As String, cveJuzgado As String)
+        Dim fileName = "AjaxCall" & ".xlsx"
+
+        'Save the file to server temp folder
+        Dim fullPath As String = Path.Combine(Server.MapPath("~/temp"), fileName)
+
+        'Create an instance of ExcelEngine
+        Using excelEngine As ExcelPackage = New ExcelPackage
+
+
+            'Create a workbook with a worksheet
+            Dim workbook As ExcelWorkbook = excelEngine.Workbook
+
+            'Access first worksheet from the workbook instance
+            Dim worksheet As ExcelWorksheet = workbook.Worksheets(0)
+
+            'Insert sample text into cell “A1”
+            worksheet.Cells.Value("A1") = "Hello World!"
+
+            'Save the workbook to disk in xlsx format
+            excelEngine.SaveAs(fullPath)
+        End Using
+        Dim errorMessage = "you can return the errors here!"
+        'Return the Excel file name
+        Return New With {Key .fileName = fileName, errorMessage}
+
+    End Function
+
+
 
 End Class

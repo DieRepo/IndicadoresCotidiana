@@ -6,7 +6,7 @@ var Meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Ag
 
 $(function () {
     consulta("VerificaLogin", "{}", function (data) {
-        if (data == "si") {           
+        if (data == "si") {
             creaJsonMenuIndicadoresT($("#Indicadores-materia > ul"));
             eventosMouseover();
             eventosClick();
@@ -55,7 +55,7 @@ function obtenJson(elemento) {
     var jsonMenuTemp = jsonMenu;
     recorrido(elemento, arrayRec);
 
-    for (var i = (arrayRec.length-1); i >= 0; i--) {
+    for (var i = (arrayRec.length - 1); i >= 0; i--) {
         jsonMenuTemp = jsonMenuTemp[arrayRec[i]];
     }
 
@@ -70,14 +70,14 @@ function recorrido(elemento, arrayRec) {
     if (padre.length != "") {
         arrayRec.push("hijos");
         recorrido(($("body").find("li > a[data-i=id" + padre + "]")).closest("li"), arrayRec);
-    } 
-    
+    }
+
 }
 
 function obtenYmuestraAllDatos() {
 
     try {
-        
+
         $("#Tex1, #Tex2, #Tex3, #Desc1, #Desc2, #Desc3, .page-header-pj > span").text("");
         $("#morris-bar-chart, #morris-donut-chart").empty();
         $("#Complemento *:not(#button-pdf-exporta)").remove();
@@ -94,7 +94,7 @@ function obtenYmuestraAllDatos() {
         var mes = $("#Meses").val();
         var fechaD = new Date(anio, mes, 0);
         var fechaF = fechaD.toISOString().substring(0, 10);
-        var dataJ = "{fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado +"'}";
+        var dataJ = "{fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
         var rangoFechas = rangoFechasConsulta(mes, anio);
         var position = 1;
 
@@ -119,10 +119,10 @@ function obtenYmuestraAllDatos() {
 
                 var msj2 = item.id != "1" ? jsonMsj[item.id].desc2 + ': ' + j[0].total : "";
                 //var msj3 = item.id != "1" ? jsonMsj[item.id].desc3 + ': ' + j[0].total : "";
-                var msj3 = item.id != "1" ? jsonMsj[item.id].desc3 + ' ' + $('#Juzgados option:selected').text() + ': ' + promIndice(j, 0, item.id) + ' ' + jsonMsj[item.id].sim: " ";
+                var msj3 = item.id != "1" ? jsonMsj[item.id].desc3 + ' ' + $('#Juzgados option:selected').text() + ': ' + promIndice(j, 0, item.id) + ' ' + jsonMsj[item.id].sim : " ";
 
                 //htmlStringDatos = ' <div class="col-sm-6">' 
-                htmlStringDatos = ' <div>' 
+                htmlStringDatos = ' <div>'
                     + ' <div style = "width:100%; display:inline-table;">'
                     + ' <table class="tablaGraficas">'
                     + ' <tr>'
@@ -135,13 +135,13 @@ function obtenYmuestraAllDatos() {
                     + ' </table> </div>'
                     + ' <div style="width:100%; display:inline-table;"> <table class="tablavariables" >'
                     + ' <tr ALIGN=LEFT>'
-                    + ' <td><label>' + jsonMsj[item.id].desc1 + ': ' + j[0].valor +'</label></td>'
+                    + ' <td><label>' + jsonMsj[item.id].desc1 + ': ' + j[0].valor + '</label></td>'
                     + ' </tr>'
                     + ' <tr ALIGN=LEFT>'
-                    + ' <td><label>' + msj2 +'</label></td>'
+                    + ' <td><label>' + msj2 + '</label></td>'
                     + ' </tr>'
                     + ' <tr ALIGN=LEFT>'
-                    + ' <td><label>' + msj3 +'</label></td>'
+                    + ' <td><label>' + msj3 + '</label></td>'
                     + ' </tr>'
                     + ' </table>'
                     + ' </div>'
@@ -149,7 +149,7 @@ function obtenYmuestraAllDatos() {
 
                 $("#complemento_temporal").prepend(htmlStringDatos);
 
-                gBarra("grafica-" + item.id, j, item.id); 
+                gBarra("grafica-" + item.id, j, item.id);
 
             });
 
@@ -168,7 +168,7 @@ function obtenYmuestraAllDatos() {
         })
 
     } catch (e) {
-        console.error("Error en consulta todos los datos: "+e.toString());
+        console.error("Error en consulta todos los datos: " + e.toString());
     } finally {
         desvaneceMascara("maskRef");
     }
@@ -188,7 +188,7 @@ function tablaAllDatos() {
     var mes = $("#Meses").val();
     var fechaD = new Date(anio, mes, 0);
     var fechaF = fechaD.toISOString().substring(0, 10);
-    var dataJ = "{fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado +"'}";
+    var dataJ = "{fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
 
     var rangoFechas = rangoFechasConsulta(mes, anio);
 
@@ -308,7 +308,7 @@ function obtenYmuestraDatos(jsonActual) {
         var fechaD = new Date(anio, mes, 0);
         var fechaF = fechaD.toISOString().substring(0, 10);
 
-         //var dataJ = "{ind:'" + jsonActual.id + "', fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
+        //var dataJ = "{ind:'" + jsonActual.id + "', fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
 
         var dataJson = "{id:" + jsonActual.id + ", anio:'" + anio + "', mes:'" + mes + "', cveDistrito:'" + cveDistrito + "', materia:'" + cveMateria + "', cveJuzgado:" + cveJuzgado + "}";
 
@@ -333,7 +333,7 @@ function obtenYmuestraDatos(jsonActual) {
             } else {
                 $("#distrito").text(String($('#Juzgados option:selected').text()).capital());
             }
-            
+
             gBarra("morris-bar-chart", result, jsonActual.id);
 
             $("#morris-bar-chart circle").each(function (i, e) {
@@ -354,7 +354,7 @@ function obtenYmuestraDatos(jsonActual) {
         secActual = "indicadores";
         jActual = jsonActual;
 
-        
+
     } catch (e) {
         console.error("Error en consulta: " + e.toString());
     } finally {
@@ -390,9 +390,9 @@ function obtenYmuestraDatosTabla(jsonActual) {
             case "familiar":
                 materia = "f";
                 break;
-        } 
+        }
 
-        var dataJ = "{ind:'" + jsonActual.id + "', fecha:'" + fechaF + "', distrito:'" + idDisJuz + "', materia:'" + materia + "', cveJuzgado:'" + cveJuzgado +"'}";
+        var dataJ = "{ind:'" + jsonActual.id + "', fecha:'" + fechaF + "', distrito:'" + idDisJuz + "', materia:'" + materia + "', cveJuzgado:'" + cveJuzgado + "'}";
 
         var result = [];
 
@@ -423,7 +423,7 @@ function obtenYmuestraDatosTabla(jsonActual) {
                 $(this).attr("style", "cursor: pointer");
             })
 
-            gTabla(result, jsonActual.id,0);
+            gTabla(result, jsonActual.id, 0);
 
             if (!(/\b(1)\b/).test(String(jsonActual.id).trim())) {
                 gDona(result, jsonActual.id, 0);
@@ -435,7 +435,7 @@ function obtenYmuestraDatosTabla(jsonActual) {
         } else {
             console.log("Algo ocurrio cuando se compoaraba el result");
         }
-        
+
         secActual = "indicadoresTabla";
         jActual = jsonActual;
 
@@ -592,12 +592,12 @@ function obtenYmuestraDatosTramite(jsonActual) {
 
 function mesAnio(fec) {
     var fech = fec.split("-");
-    return Meses[parseInt(fech[1])-1] + " " + fech[0];
+    return Meses[parseInt(fech[1]) - 1] + " " + fech[0];
 }
 
 function promIndice(json, columna, id) {
 
-    var m = (/\b(9|14|15)\b/).test(String(id).trim()) ? 1 : 100; 
+    var m = (/\b(9|14|15)\b/).test(String(id).trim()) ? 1 : 100;
 
     if ((/\b(17)\b/).test(String(id).trim())) {
         if (json[columna].total != '' && json[columna].total != '0') {
@@ -635,7 +635,7 @@ function cambioMesAnio(callback) {
 
     var fecha = new Date();
     var anioActual = fecha.getFullYear();
-    var mesActual = fecha.getMonth() ;
+    var mesActual = fecha.getMonth();
     var anio = $("#Anios").val();
     var mes = $("#Meses").val();
     var month = anioActual == anio ? mesActual : 12;
@@ -645,10 +645,10 @@ function cambioMesAnio(callback) {
     for (var x = 1; x <= month; x++) {
         if (anio === 2019) {
             if (x >= 8) {
-                $('#Meses').append('<option value="' + x + '">' + Meses[x-1] + '</option>');
+                $('#Meses').append('<option value="' + x + '">' + Meses[x - 1] + '</option>');
             }
         } else {
-            $('#Meses').append('<option value="' + x + '">' + Meses[x-1] + '</option>');
+            $('#Meses').append('<option value="' + x + '">' + Meses[x - 1] + '</option>');
         }
 
         //$('#Meses').append('<option value="' + x + '">' + Meses[x - 1] + '</option>');
@@ -705,7 +705,7 @@ function gTablaResoluciones(jr, id, idx) {
 function gTablaTramites(jr, id, idx) {
 
     $("#Complemento").empty();
-    
+
     var tabla = "<div class=\"container contenedor-tabla-pj order-column\" style=\"width:auto\">"
         + "<table id=\"table-datos-pj\" class=\"table-datos-pj table table-bordered table-condensed\">"
         + "<tr>"
@@ -741,7 +741,7 @@ function gBarra(idBarra, jr, id) {
     for (var x = 0; x < jr.length; x++) {
         datos.push({
             y: jr[x].fecha,
-           // x: parseFloat(jr[x].valor)
+            // x: parseFloat(jr[x].valor)
             x: id != "1" ? promIndice(jr, x, id) : parseFloat(jr[x].valor)
         });
     }
@@ -818,7 +818,7 @@ function gDona(jr, id, idx) {
 
     //mensajesAct(jr, id, idx);
 
-    donut.select(0); 
+    donut.select(0);
 }
 
 function mensajesAct(jr, id, idx) {
@@ -859,7 +859,7 @@ function desvaneceMascara(id) {
     //    $("#" + id).remove();
     //});
 
-   // $("#maskRef").css("display", "none");
+    // $("#maskRef").css("display", "none");
     document.getElementById("maskRef").style.display = "none";
 }
 
@@ -870,7 +870,7 @@ String.prototype.capital = function () {
 };
 
 String.prototype.getMes = function () {
-    return this.length == 1 ? "0" + this : this;    
+    return this.length == 1 ? "0" + this : this;
 };
 
 var jActual = null;
@@ -891,12 +891,12 @@ function eventosClick() {
                     obtenYmuestraDatosTabla(obtenJson(b));
                 });
 
-            }else if((/id(17)/).test($(b).children("a").attr("data-i"))) {
+            } else if ((/id(17)/).test($(b).children("a").attr("data-i"))) {
                 mascara("maskRef", "0.6", function () {
                     //obtenYmuestraDatosTerminos(obtenJson(b));
                     obtenYmuestraDatos(obtenJson(b));
-                });              
-            
+                });
+
             } else if ((/id(9)/).test($(b).children("a").attr("data-i"))) {
                 mascara("maskRef", "0.6", function () {
                     obtenYmuestraDatosTramite(obtenJson(b));
@@ -920,7 +920,7 @@ function eventosClick() {
                 $(this).find(".arrow-ind").addClass("fa-angle-left");
             }
 
-        }   
+        }
     });
 
     $("#logo-pj").click(function () {
@@ -948,17 +948,17 @@ function eventosClick() {
 
                 var j = $("#Juzgados option:selected").text();
 
-               html2canvas(document.querySelector("#Complemento")).then(canvas => {
+                html2canvas(document.querySelector("#Complemento")).then(canvas => {
                     var imgData = canvas.toDataURL('image/png');
-                   var doc = new jsPDF('p', 'mm', 'letter');
+                    var doc = new jsPDF('p', 'mm', 'letter');
                     doc.setFontSize(20);
-                   doc.text(15, 25, "INDICADORES GENERALES");
-                   doc.addImage(imgData, 'PNG', 5, 35, 205, 110); // 1: canvas, 2: formato, 3: posicion x, 4: posicion: y, 5: ancho, 6: largo
-                   doc.save("Indicadores.pdf");
+                    doc.text(15, 25, "INDICADORES GENERALES");
+                    doc.addImage(imgData, 'PNG', 5, 35, 205, 110); // 1: canvas, 2: formato, 3: posicion x, 4: posicion: y, 5: ancho, 6: largo
+                    doc.save("Indicadores.pdf");
                     $("#button-pdf-exporta").show();
                 });
 
-            });           
+            });
 
         } catch (ex) {
             console.log(ex);
@@ -980,7 +980,7 @@ function eventosClick() {
         },
         modal: true,
     });
-    
+
     $("#cierra-sesion").on("click", function () {
 
         ejecuta("ExitUser", "{}", function () {
@@ -989,6 +989,247 @@ function eventosClick() {
 
     });
 
+    $("#detalle").on("click", function () {
+
+        var cveDistrito = $("#Juzgados").val();
+        //var cveJuzgado = $("#Juzgado").val();
+        var cveJuzgado = ($("#Juzgado").val().length > 0) ? $("#Juzgado").val() : 0;
+        //var cveMateria = $("#Materia").val();
+        var anio = $("#Anios").val();
+        var mes = $("#Meses").val();
+
+
+        //var dataJ = "{ind:'" + jsonActual.id + "', fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
+
+        var dataJson = "{anio:'" + anio + "', mes:'" + mes + "', cveDistrito:'" + cveDistrito + "', cveJuzgado:" + cveJuzgado + "}";
+        var datosEx = [];
+
+        consulta("DescargaExcel", dataJson, function (data) {
+            datosEx = data;
+            var CsvString = "";
+            CsvString = "Anio,Mes,Fecha Resgistro,Fecha Actualizacion,Expediente,DiferenciaHoras,Juzgado";
+            CsvString += "\r\n";
+            for (var row in datosEx) {
+                //for (var col = 0; col < 2; col++) {
+                CsvString += datosEx[row].Anio + ",";
+                CsvString += datosEx[row].Mes + ",";
+                CsvString += datosEx[row].FechaResgistro + ",";
+                CsvString += datosEx[row].FechaActualizacion + ",";
+                CsvString += datosEx[row].Expediente + ",";
+                CsvString += datosEx[row].DifHoras + ",";
+                CsvString += datosEx[row].Juzgado + ",";
+                CsvString += "\r\n";
+                //console.log(Results.length);
+                //}
+                //CsvString += "\r\n";
+            }
+
+            CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+            var x = document.createElement("A");
+            x.setAttribute("href", CsvString);
+            x.setAttribute("download", "notificaciones.csv");
+            document.body.appendChild(x);
+            x.click();
+        });
+
+
+
+
+
+        //var wb = XLSX.utils.book_new();
+        //wb.Props = {
+        //    Title: "SheetJS Tutorial",
+        //    Subject: "Test",
+        //    Author: "Red Stapler",
+        //    CreatedDate: new Date(2017, 12, 19)
+        //};
+
+        //wb.SheetNames.push("Test Sheet");
+        //var ws_data = [[anios, meses]];
+
+
+
+        //var ws = XLSX.utils.aoa_to_sheet(ws_data);
+        //wb.Sheets["Test Sheet"] = ws;
+        //var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+        //function s2ab(s) {
+
+        //    var buf = new ArrayBuffer(s.length);
+        //    var view = new Uint8Array(buf);
+        //    for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+        //    return buf;
+
+        //}
+        //$("#desc-detalle").click(function () {
+        //    saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'test.xlsx');
+        //});
+
+        //var Results = [];
+        //$("#desc-detalle").on("click", function () {
+        //    var CsvString = "";
+        //    CsvString = "Año,Mes,Fecha Resgistro,Fecha Actualizacion,Expediente,DiferenciaHoras,Juzgado";
+        //    CsvString += "\r\n";
+        //    for (var row in datosEx) {
+        //        //for (var col = 0; col < 2; col++) {
+        //        CsvString += datosEx[row].Anio + ",";
+        //        CsvString += datosEx[row].Mes + ",";
+        //        CsvString += datosEx[row].FechaResgistro + ",";
+        //        CsvString += datosEx[row].FechaActualizacion + ",";
+        //        CsvString += datosEx[row].Expediente + ",";
+        //        CsvString += datosEx[row].DifHoras + ",";
+        //        CsvString += datosEx[row].Juzgado + ",";
+        //        CsvString += "\r\n";
+        //        console.log(Results.length);
+        //        //}
+        //        //CsvString += "\r\n";
+        //    }
+
+        //    CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+        //    var x = document.createElement("A");
+        //    x.setAttribute("href", CsvString);
+        //    x.setAttribute("download", "somedata.csv");
+        //    document.body.appendChild(x);
+        //    x.click();
+        //});
+    });
+
+    $("#detalle2").on("click", function () {
+
+        var cveDistrito = $("#Juzgados").val();
+        //var cveJuzgado = $("#Juzgado").val();
+        var cveJuzgado = ($("#Juzgado").val().length > 0) ? $("#Juzgado").val() : 0;
+        //var cveMateria = $("#Materia").val();
+        var anio = $("#Anios").val();
+        var mes = $("#Meses").val();
+
+
+        //var dataJ = "{ind:'" + jsonActual.id + "', fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
+
+        var dataJson = "{anio:'" + anio + "', mes:'" + mes + "', cveDistrito:'" + cveDistrito + "', cveJuzgado:" + cveJuzgado + "}";
+        var datosEx = [];
+
+        consulta("DescargaExcelPromociones", dataJson, function (data) {
+            datosEx = data;
+            var CsvString = "";
+            CsvString = "Anio,Mes,Fecha Promocion,Fecha Acuerdo,Expediente,DiferenciaHoras,Juzgado";
+            CsvString += "\r\n";
+            for (var row in datosEx) {
+                //for (var col = 0; col < 2; col++) {
+                CsvString += datosEx[row].Anio + ",";
+                CsvString += datosEx[row].Mes + ",";
+                CsvString += datosEx[row].FechaResgistro + ",";
+                CsvString += datosEx[row].FechaActualizacion + ",";
+                CsvString += datosEx[row].Expediente + ",";
+                CsvString += datosEx[row].DifHoras + ",";
+                CsvString += datosEx[row].Juzgado + ",";
+                CsvString += "\r\n";
+                //console.log(Results.length);
+                //}
+                //CsvString += "\r\n";
+            }
+
+            CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+            var x = document.createElement("A");
+            x.setAttribute("href", CsvString);
+            x.setAttribute("download", "promociones.csv");
+            document.body.appendChild(x);
+            x.click();
+        });
+    });
+
+
+
+        $("#detalle1").on("click", function () {
+
+            var cveDistrito = $("#Juzgados").val();
+            //var cveJuzgado = $("#Juzgado").val();
+            var cveJuzgado = ($("#Juzgado").val().length > 0) ? $("#Juzgado").val() : 0;
+            //var cveMateria = $("#Materia").val();
+            var anio = $("#Anios").val();
+            var mes = $("#Meses").val();
+
+
+            //var dataJ = "{ind:'" + jsonActual.id + "', fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
+
+            var dataJson = "{anio:'" + anio + "', mes:'" + mes + "', cveDistrito:'" + cveDistrito + "', cveJuzgado:" + cveJuzgado + "}";
+            var datosEx = [];
+
+            consulta("DescargaExcelNotifiElec", dataJson, function (data) {
+                datosEx = data;
+                var CsvString = "";
+                CsvString = "Anio,Mes,Fecha Acuerdo,Fecha Notificacion,Expediente,DiferenciaHoras,Juzgado";
+                CsvString += "\r\n";
+                for (var row in datosEx) {
+                    //for (var col = 0; col < 2; col++) {
+                    CsvString += datosEx[row].Anio + ",";
+                    CsvString += datosEx[row].Mes + ",";
+                    CsvString += datosEx[row].FechaResgistro + ",";
+                    CsvString += datosEx[row].FechaActualizacion + ",";
+                    CsvString += datosEx[row].Expediente + ",";
+                    CsvString += datosEx[row].DifHoras + ",";
+                    CsvString += datosEx[row].Juzgado + ",";
+                    CsvString += "\r\n";
+                    //console.log(Results.length);
+                    //}
+                    //CsvString += "\r\n";
+                }
+
+                CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+                var x = document.createElement("A");
+                x.setAttribute("href", CsvString);
+                x.setAttribute("download", "notificacionesElectronicas.csv");
+                document.body.appendChild(x);
+                x.click();
+            });
+        });
+
+    $("#detalle3").on("click", function () {
+
+        var cveDistrito = $("#Juzgados").val();
+        //var cveJuzgado = $("#Juzgado").val();
+        var cveJuzgado = ($("#Juzgado").val().length > 0) ? $("#Juzgado").val() : 0;
+        //var cveMateria = $("#Materia").val();
+        var anio = $("#Anios").val();
+        var mes = $("#Meses").val();
+        var materia = $("#Materia").val();
+
+
+        //var dataJ = "{ind:'" + jsonActual.id + "', fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
+
+        var dataJson = "{anio:'" + anio + "', mes:'" + mes + "', cveDistrito:'" + cveDistrito + "', cveJuzgado:" + cveJuzgado + "}";
+        var datosEx = [];
+
+        
+
+        if (materia != 1) {
+            consulta("DescargaExcelAudienciasc", dataJson, function (data) {
+                datosEx = data;
+                var CsvString = "";
+                CsvString = "Anio,Mes,Fecha Inicio,Fecha Final,Estatus,Juzgado";
+                CsvString += "\r\n";
+                for (var row in datosEx) {
+                    //for (var col = 0; col < 2; col++) {
+                    CsvString += datosEx[row].Anio + ",";
+                    CsvString += datosEx[row].Mes + ",";
+                    CsvString += datosEx[row].FechaInicio + ",";
+                    CsvString += datosEx[row].FechaFinal + ",";
+                    CsvString += datosEx[row].Estatus + ",";
+                    CsvString += datosEx[row].Juzgado + ",";
+                    CsvString += "\r\n";
+                    //console.log(Results.length);
+                    //}
+                    //CsvString += "\r\n";
+                }
+
+                CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+                var x = document.createElement("A");
+                x.setAttribute("href", CsvString);
+                x.setAttribute("download", "audiencias.csv");
+                document.body.appendChild(x);
+                x.click();
+            });
+        }
+    });
 }
 
 function muestraSubMenu(ele) {
@@ -1001,7 +1242,7 @@ function muestraSubMenu(ele) {
     $(actual).slideUp(function () {
         $(actual).remove();
     });
-    
+
 
     jsonActual = obtenJson(ele);
     var subMenuActivo = "";
@@ -1056,10 +1297,10 @@ function eventosMouseover() {
 
 function eventosMouseleave() {
 
- /*   $("body").on("mouseleave", ".sub-m-ind", function () {
-        $(".sub-m-ind").remove();
-    })
-*/
+    /*   $("body").on("mouseleave", ".sub-m-ind", function () {
+           $(".sub-m-ind").remove();
+       })
+   */
 
 }
 
@@ -1144,10 +1385,10 @@ function rangoFechasConsulta(mes, anio) {
     return aniosCons;
 }
 
-function evaluaDatos(jsonR,anio, mes) {
+function evaluaDatos(jsonR, anio, mes) {
 
     if (jsonR != null && jsonR.length) {
-    
+
         var jsonS = [];
         var rangoFechas = rangoFechasConsulta(mes, anio);
 
@@ -1204,7 +1445,7 @@ function evaluaDatosTabla(jsonR, anio, mes) {
             $.each(jsonR, function (indexB, itemB) {
 
                 if (itemA == (itemB.anio + "-" + String(itemB.mes).getMes())) {
-                    j = { fecha: itemB.anio + "-" + String(itemB.mes).getMes(), valor: itemB.valor, total: itemB.total, jucios: itemB.juicios};
+                    j = { fecha: itemB.anio + "-" + String(itemB.mes).getMes(), valor: itemB.valor, total: itemB.total, jucios: itemB.juicios };
 
                     return false;
                 }
@@ -1214,7 +1455,7 @@ function evaluaDatosTabla(jsonR, anio, mes) {
             if (j != null) {
                 jsonS.push(j);
             } else {
-                jsonS.push({ fecha: itemA, valor: 0, total: 0, juicios: {}});
+                jsonS.push({ fecha: itemA, valor: 0, total: 0, juicios: {} });
             }
 
         });
@@ -1226,7 +1467,7 @@ function evaluaDatosTabla(jsonR, anio, mes) {
 
         for (var i = 0; i < 4; i++) {
             var fec = (new Date(anio, (mes - i), 0)).toISOString().substring(0, 7);
-            jsonS.push({ fecha: fec, valor: 0, total: 0, juicios: {}});
+            jsonS.push({ fecha: fec, valor: 0, total: 0, juicios: {} });
         }
 
         return jsonS;
@@ -1329,9 +1570,19 @@ function evaluaDatosTramite(jsonR, anio, mes) {
 }
 
 function cargaJuzgados() {
-  
+
     var cveDistrito = $("#Juzgados").val();
     var materia = $("#Materia").val();
+
+    if (materia == 2 || materia == 3) {
+        $('#detalle3').each(function () {
+            $(this).show()
+        });
+    } else {
+        $('#detalle3').each(function () {
+            $(this).hide()
+        });
+    }
 
     var dataJ = "{cveDistrito:'" + cveDistrito + "', materia:'" + materia + "'}";
 
@@ -1341,7 +1592,7 @@ function cargaJuzgados() {
         result = data;
     });
 
-    if (result != null && result.length) {    
+    if (result != null && result.length) {
         $("#Juzgado").empty();
         $('#Juzgado').append('<option value="" selected="selected">Total</option>');
 

@@ -32,7 +32,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
-
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+    <script lang="javascript" src="../js/fileSaver.js"></script>
     <style>
         table {
             width: 100%;
@@ -176,7 +177,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="click">
+                        <li class="click"><a id="detalle2"><i class="fa fa-download fa-fw"></i>GENERAR DETALLE ACUERDO DE PROMOCIONES</a></li>
+                        <li class="click"><a id="detalle"><i class="fa fa-download fa-fw"></i>GENERAR DETALLE PRÁCTICA DE NOTIFICACIONES EN TIEMPO</a></li>
+                        <li class="click"><a id="detalle1"><i class="fa fa-download fa-fw"></i>GENERAR DETALLE PRÁCTICA DE NOTIFICACIONES ELECTRÓNICAS</a></li>
+                        <li class="click"><a id="detalle3"><i class="fa fa-download fa-fw"></i>GENERAR DETALLE AUDIENCIAS</a></li>
+                        <li>
                             <a id="cierra-sesion"><i class="fa fa-power-off fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>

@@ -989,6 +989,49 @@ function eventosClick() {
 
     });
 
+    $("#detalle").on("click", function () {
+        var cveDistrito = $("#Juzgados").val();
+        //var cveJuzgado = $("#Juzgado").val();
+        var cveJuzgado = ($("#Juzgado").val().length > 0) ? $("#Juzgado").val() : 0;
+        //var cveMateria = $("#Materia").val();
+        var anio = $("#Anios").val();
+        var mes = $("#Meses").val();
+
+
+        //var dataJ = "{ind:'" + jsonActual.id + "', fechaF:'" + fechaF + "', idDisJuz:'" + idDisJuz + "', materia:'" + nomJuz + "', cveJuzgado:'" + cveJuzgado + "'}";
+
+        var dataJson = "{anio:'" + anio + "', mes:'" + mes + "', cveDistrito:'" + cveDistrito + "', cveJuzgado:" + cveJuzgado + "}";
+
+        var wb = XLSX.utils.book_new();
+        wb.Props = {
+            Title: "SheetJS Tutorial",
+            Subject: "Test",
+            Author: "Red Stapler",
+            CreatedDate: new Date(2017, 12, 19)
+        };
+
+        wb.SheetNames.push("Test Sheet");
+        var ws_data = [['hello', 'world']];
+        var ws = XLSX.utils.aoa_to_sheet(ws_data);
+        wb.Sheets["Test Sheet"] = ws;
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+        function s2ab(s) {
+
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+
+        }
+        $("#desc-detalle").click(function () {
+            saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'test.xlsx');
+        });
+
+        //ejecutaExcel("DescargaExcel", dataJson, function () {
+        //});
+
+    });
+
 }
 
 function muestraSubMenu(ele) {
@@ -1354,3 +1397,4 @@ function cargaJuzgados() {
     }
 
 }
+

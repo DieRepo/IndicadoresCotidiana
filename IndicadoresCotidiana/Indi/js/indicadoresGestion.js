@@ -17,12 +17,17 @@ function creaJsonMenuIndicadoresG(origen) {
     $.each(jsonGestion, function (val, item) { 
 
         if (($("#Materia").val() == 1 && item.id == 4) != true) {
+
+            $('#detalle3').each(function () {
+                $(this).hide()
+            });
+
             if (item.activo) {
                 menuArray[item.orden] = '<li class="gestion click"> <a data-activo="true" data-id= "' + item.id + '">' + item.orden + '.- ' + item.titulo + '</a></li>\n';
             } else {
                 menuArray[item.orden] = '<li class="gestion click"> <a data-activo="false" data-id= "' + 0 + '" data-toggle="tooltip" data-placement="right" title="Indicador proximamente">' + item.orden + '.- ' + item.titulo + ' *</a></li>\n';
             }
-        }
+        } 
         i++;
     });
 

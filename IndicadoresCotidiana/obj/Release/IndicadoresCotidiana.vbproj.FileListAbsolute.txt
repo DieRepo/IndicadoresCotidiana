@@ -10,3 +10,20 @@ C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana
 C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Release\IndicadoresPjem.xml
 C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Release\IndicadoresPjem.pdb
 C:\Users\carolina\Desktop\REPOSITORIOS\IndicadoresCotidiana\IndicadoresCotidiana\obj\Release\IndicadoresCotidiana.vbprojAssemblyReference.cache
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\IndicadoresPjem.dll.config
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\IndicadoresPjem.dll
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\IndicadoresPjem.pdb
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\IndicadoresPjem.xml
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\EPPlus.dll
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\EPPlus.Interfaces.dll
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\EPPlus.System.Drawing.dll
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\MySql.Data.dll
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\bin\EPPlus.xml
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresCotidiana.vbprojAssemblyReference.cache
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresPjem.Resources.resources
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresCotidiana.vbproj.GenerateResource.cache
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresCotidiana.vbproj.CoreCompileInputs.cache
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresCotidiana.vbproj.CopyComplete
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresPjem.dll
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresPjem.xml
+C:\Users\M Alberto González V\Source\Repos\indicadorescotidinana\IndicadoresCotidiana\obj\Release\IndicadoresPjem.pdb
